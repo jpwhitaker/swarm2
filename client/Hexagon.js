@@ -36,9 +36,10 @@ Piece = function (canvas) {
    * A Hexagon is a 6 sided polygon, our hexes don't have to be symmetrical, i.e. ratio of width to height could be 4 to 3
    * @constructor
    */
-  function Hexagon(id, x, y) {
+  function Hexagon(id, x, y, type) {
     this.Points = [];//Polygon Base
     this.lineColor = 'grey'
+    this.type = type;
     this.closestSnappingEdge = null;
     var x1 = null;
     var y1 = null;

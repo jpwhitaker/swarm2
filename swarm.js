@@ -1,6 +1,7 @@
 if (Meteor.isClient) {
+
   Meteor.startup(function () {
-      // Canvas.resizeCanvas();
+      Canvas.resizeCanvas();
       Piece.Hexagon = Piece(document.querySelector('canvas'))
 
 
@@ -8,6 +9,7 @@ if (Meteor.isClient) {
       player2 = [];
 
       players = [player1, player2];
+
 
       pieces = {
         ant:    3,
@@ -17,34 +19,15 @@ if (Meteor.isClient) {
         queen:  1
       };
 
-      givePlayerPieces = function(){
-        for (player in players) {
-          for (pieceType in pieces){
-            for (i = 0; i < pieces[pieceType]; i++) {
-              piece = new Piece.Hexagon(pieceType, 0, 0)
-              players[player].push(piece)
-            };
-          };
-        };
-      };
-
-      // givePlayerPieces = function(){
-      //   _.each(players, function(player){
-      //     _.each(pieces, function(piece){
-      //       _.map(pieces, function(piece, amount){
-      //         return 
-      //       })
-      //     })
-      //   })
-      // }
-
+      Game.start()
+      board = player1.concat(player2)
 
 
       // canvas.addEventListener('dblclick', function(event){
       //   Canvas.addPieceToBoard()
       // })
 
-      // Canvas.dragHex();
+      Canvas.dragHex();
 
   })
 };

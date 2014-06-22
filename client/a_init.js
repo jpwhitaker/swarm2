@@ -1,3 +1,4 @@
 this.Swarm = {};
-this.Piece = {};
-this.Canvas = {};
+// this.Piece = {};
+
+// this.Canvas = {};
