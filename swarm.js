@@ -2,7 +2,8 @@ if (Meteor.isClient) {
 
   Meteor.startup(function () {
       Canvas.resizeCanvas();
-      Piece.Hexagon = Piece(document.querySelector('canvas'))
+      canvas = document.querySelector('canvas')
+      // Piece.Hexagon = Piece()
 
 
       player1 = [];
@@ -19,7 +20,7 @@ if (Meteor.isClient) {
         queen:  1
       };
 
-      Game.start()
+      // Game.start()
       board = player1.concat(player2)
 
 
@@ -27,7 +28,7 @@ if (Meteor.isClient) {
       //   Canvas.addPieceToBoard()
       // })
 
-      Canvas.dragHex();
+      // Canvas.dragHex();
 
   })
 };
