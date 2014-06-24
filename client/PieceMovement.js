@@ -1,8 +1,20 @@
-  Meteor.startup(function () {
-    canvas.addEventListener('dblclick', function(event){
-          Canvas.addPieceToBoard()
-        })
+Meteor.startup(function () {
+  canvas.addEventListener('dblclick', function(e){
+        Canvas.addPieceToBoard(e)
+      })
 })
+
+Canvas.addPieceToBoard = function (e){
+  board.push(new Hexagon (1, e.x, e.y, 'piece', Hexagon.generateNeighbors(e.x, e.y)))
+}
+
+Canvas.drawNeighbors = function(){
+  for(piece in board){
+    for(neighbor in board[piece].neighbors){
+      board[piece].neighbors[neighbor].draw(ctx)
+    }
+  }
+}
 
 // Canvas.selectHex = function(e){
 //   allPieces = player1.concat(player2)
