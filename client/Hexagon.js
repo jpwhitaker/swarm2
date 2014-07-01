@@ -37,14 +37,15 @@ Meteor.startup(function(){
    * @constructor
    */
   Hexagon = function(id, x, y, type, neighbors) {
+    // debugger
     this.Points = [];//Polygon Base
     this.type = type
     this.neighbors = neighbors
     var x1 = null;
     var y1 = null;
     if(Hexagon.Static.ORIENTATION == Hexagon.Orientation.Normal) {
-      x1 = (Hexagon.Static.WIDTH - Hexagon.Static.SIDE)/2;
-      y1 = (Hexagon.Static.HEIGHT / 2);
+      // x1 = (Hexagon.Static.WIDTH - Hexagon.Static.SIDE)/2;
+      // y1 = (Hexagon.Static.HEIGHT / 2);
       this.Points.push(new Point(x1 + x, y));
       this.Points.push(new Point(x1 + Hexagon.Static.SIDE + x, y));
       this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + y));
@@ -53,14 +54,21 @@ Meteor.startup(function(){
       this.Points.push(new Point(x, y1 + y));
     }
     else {
+      // debugger
+
+      //midX and midY shift everything to the midpoint of where the cursor clicked
+      midX = x + (Hexagon.Static.WIDTH / 2)
+      midY = y + (Hexagon.Static.HEIGHT / 2)
+
+
       x1 = (Hexagon.Static.WIDTH / 2);
       y1 = (Hexagon.Static.HEIGHT - Hexagon.Static.SIDE)/2;
-      this.Points.push(new Point(x1 + x, y));
-      this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + y));
-      this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + Hexagon.Static.SIDE + y));
-      this.Points.push(new Point(x1 + x, Hexagon.Static.HEIGHT + y));
-      this.Points.push(new Point(x, y1 + Hexagon.Static.SIDE + y));
-      this.Points.push(new Point(x, y1 + y));
+      this.Points.push(new Point(x, y - (y1*2)));
+      this.Points.push(new Point(Hexagon.Static.WIDTH + x - x1,  y - y1));
+      this.Points.push(new Point(Hexagon.Static.WIDTH + x-x1,  Hexagon.Static.SIDE + y -y1));
+      this.Points.push(new Point(x, Hexagon.Static.HEIGHT + y - (y1*2)));
+      this.Points.push(new Point(x-x1,  Hexagon.Static.SIDE + y -y1));
+      this.Points.push(new Point(x-x1, y -y1));
     }
 
     this.Id = id;
@@ -72,7 +80,7 @@ Meteor.startup(function(){
 
     this.TopLeftPoint = new Point(this.x, this.y);
     this.BottomRightPoint = new Point(this.x + Hexagon.Static.WIDTH, this.y + Hexagon.Static.HEIGHT);
-    this.MidPoint = new Point(this.x + (Hexagon.Static.WIDTH / 2), this.y + (Hexagon.Static.HEIGHT / 2));
+    this.MidPoint = new Point(this.x, this.y);
 
     this.P1 = new Point(x + x1, y + y1);
 

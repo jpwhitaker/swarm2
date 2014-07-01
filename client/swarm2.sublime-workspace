@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"dra",
+				"drawNeighbors"
+			],
+			[
+				"d",
+				"drawBoardPieces"
+			],
+			[
 				"x",
 				"xPositions"
 			],
@@ -506,14 +514,6 @@
 			[
 				"font",
 				"font-weight"
-			],
-			[
-				"re",
-				"reject_incoming"
-			],
-			[
-				"email",
-				"email_body"
 			]
 		]
 	},
@@ -531,7 +531,7 @@
 			"file": "Canvas.js",
 			"settings":
 			{
-				"buffer_size": 816,
+				"buffer_size": 1078,
 				"line_ending": "Unix"
 			}
 		},
@@ -544,10 +544,10 @@
 			}
 		},
 		{
-			"contents": "Searching 8 files for \"debugger\"\n\n0 matches across 0 files\n\n\nSearching 8 files for \"ghost\"\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n    6  \n    7  Canvas.addPieceToBoard = function (e){\n    8:   board.push(new Hexagon (1, e.x, e.y, 'ghost'))\n    9  }\n   10  \n\n1 match in 1 file\n\n\nSearching 8 files for \"generateNeighbors\"\n\n/Users/JP/code/swarm2/client/Piece.js:\n    2    // Hexagon.prototype.type = this.type = type || \"\"\n    3  \n    4:   Hexagon.generateNeighbors = function() {\n    5      var neighbors = []\n    6      // var x = self.MidPoint.X\n    .\n   13    }\n   14  \n   15:   Hexagon.prototype.neighbors = Hexagon.generateNeighbors()\n   16  })\n\n2 matches in 1 file\n\n\nSearching 8 files for \"new\"\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n   45        x1 = (Hexagon.Static.WIDTH - Hexagon.Static.SIDE)/2;\n   46        y1 = (Hexagon.Static.HEIGHT / 2);\n   47:       this.Points.push(new Point(x1 + x, y));\n   48:       this.Points.push(new Point(x1 + Hexagon.Static.SIDE + x, y));\n   49:       this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + y));\n   50:       this.Points.push(new Point(x1 + Hexagon.Static.SIDE + x, Hexagon.Static.HEIGHT + y));\n   51:       this.Points.push(new Point(x1 + x, Hexagon.Static.HEIGHT + y));\n   52:       this.Points.push(new Point(x, y1 + y));\n   53      }\n   54      else {\n   55        x1 = (Hexagon.Static.WIDTH / 2);\n   56        y1 = (Hexagon.Static.HEIGHT - Hexagon.Static.SIDE)/2;\n   57:       this.Points.push(new Point(x1 + x, y));\n   58:       this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + y));\n   59:       this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + Hexagon.Static.SIDE + y));\n   60:       this.Points.push(new Point(x1 + x, Hexagon.Static.HEIGHT + y));\n   61:       this.Points.push(new Point(x, y1 + Hexagon.Static.SIDE + y));\n   62:       this.Points.push(new Point(x, y1 + y));\n   63      }\n   64  \n   ..\n   70      this.y1 = y1;\n   71  \n   72:     this.TopLeftPoint = new Point(this.x, this.y);\n   73:     this.BottomRightPoint = new Point(this.x + Hexagon.Static.WIDTH, this.y + Hexagon.Static.HEIGHT);\n   74:     this.MidPoint = new Point(this.x + (Hexagon.Static.WIDTH / 2), this.y + (Hexagon.Static.HEIGHT / 2));\n   75  \n   76:     this.P1 = new Point(x + x1, y + y1);\n   77  \n   78      this.selected = false;\n   ..\n   88      else\n   89        ctx.strokeStyle = \"black\";\n   90:     ctx.lineWidth = 1;\n   91      ctx.beginPath();\n   92      ctx.moveTo(this.Points[0].X, this.Points[0].Y);\n   ..\n  124      {\n  125        ctx.strokeStyle = \"black\";\n  126:       ctx.lineWidth = 2;\n  127        //draw our x1, y1, and z\n  128        ctx.beginPath();\n  ...\n  152     */\n  153    Hexagon.prototype.isInBounds = function(x, y) {\n  154:     return this.Contains(new Point(x, y));\n  155    };\n  156      \n  ...\n  184      {\n  185        //turn our absolute point into a relative point for comparing with the polygon's points\n  186:       //var pRel = new Point(p.X - this.x, p.Y - this.y);\n  187        var i, j = 0;\n  188        for (i = 0, j = this.Points.length - 1; i < this.Points.length; j = i++)\n\n/Users/JP/code/swarm2/client/Piece.js:\n    8      debugger\n    9      for (i=0; i<8; i++){\n   10:       neighbors.push(new Hexagon(id,x,y,type))\n   11      }\n   12      return neighbors\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n    6  \n    7  Canvas.addPieceToBoard = function (e){\n    8:   board.push(new Hexagon (1, e.x, e.y, 'piece'))\n    9  }\n   10  \n\n22 matches across 3 files\n",
+			"contents": "Searching 8 files for \"debugger\"\n\n0 matches across 0 files\n\n\nSearching 8 files for \"ghost\"\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n    6  \n    7  Canvas.addPieceToBoard = function (e){\n    8:   board.push(new Hexagon (1, e.x, e.y, 'ghost'))\n    9  }\n   10  \n\n1 match in 1 file\n\n\nSearching 8 files for \"generateNeighbors\"\n\n/Users/JP/code/swarm2/client/Piece.js:\n    2    // Hexagon.prototype.type = this.type = type || \"\"\n    3  \n    4:   Hexagon.generateNeighbors = function() {\n    5      var neighbors = []\n    6      // var x = self.MidPoint.X\n    .\n   13    }\n   14  \n   15:   Hexagon.prototype.neighbors = Hexagon.generateNeighbors()\n   16  })\n\n2 matches in 1 file\n\n\nSearching 8 files for \"new\"\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n   45        x1 = (Hexagon.Static.WIDTH - Hexagon.Static.SIDE)/2;\n   46        y1 = (Hexagon.Static.HEIGHT / 2);\n   47:       this.Points.push(new Point(x1 + x, y));\n   48:       this.Points.push(new Point(x1 + Hexagon.Static.SIDE + x, y));\n   49:       this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + y));\n   50:       this.Points.push(new Point(x1 + Hexagon.Static.SIDE + x, Hexagon.Static.HEIGHT + y));\n   51:       this.Points.push(new Point(x1 + x, Hexagon.Static.HEIGHT + y));\n   52:       this.Points.push(new Point(x, y1 + y));\n   53      }\n   54      else {\n   55        x1 = (Hexagon.Static.WIDTH / 2);\n   56        y1 = (Hexagon.Static.HEIGHT - Hexagon.Static.SIDE)/2;\n   57:       this.Points.push(new Point(x1 + x, y));\n   58:       this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + y));\n   59:       this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + Hexagon.Static.SIDE + y));\n   60:       this.Points.push(new Point(x1 + x, Hexagon.Static.HEIGHT + y));\n   61:       this.Points.push(new Point(x, y1 + Hexagon.Static.SIDE + y));\n   62:       this.Points.push(new Point(x, y1 + y));\n   63      }\n   64  \n   ..\n   70      this.y1 = y1;\n   71  \n   72:     this.TopLeftPoint = new Point(this.x, this.y);\n   73:     this.BottomRightPoint = new Point(this.x + Hexagon.Static.WIDTH, this.y + Hexagon.Static.HEIGHT);\n   74:     this.MidPoint = new Point(this.x + (Hexagon.Static.WIDTH / 2), this.y + (Hexagon.Static.HEIGHT / 2));\n   75  \n   76:     this.P1 = new Point(x + x1, y + y1);\n   77  \n   78      this.selected = false;\n   ..\n   88      else\n   89        ctx.strokeStyle = \"black\";\n   90:     ctx.lineWidth = 1;\n   91      ctx.beginPath();\n   92      ctx.moveTo(this.Points[0].X, this.Points[0].Y);\n   ..\n  124      {\n  125        ctx.strokeStyle = \"black\";\n  126:       ctx.lineWidth = 2;\n  127        //draw our x1, y1, and z\n  128        ctx.beginPath();\n  ...\n  152     */\n  153    Hexagon.prototype.isInBounds = function(x, y) {\n  154:     return this.Contains(new Point(x, y));\n  155    };\n  156      \n  ...\n  184      {\n  185        //turn our absolute point into a relative point for comparing with the polygon's points\n  186:       //var pRel = new Point(p.X - this.x, p.Y - this.y);\n  187        var i, j = 0;\n  188        for (i = 0, j = this.Points.length - 1; i < this.Points.length; j = i++)\n\n/Users/JP/code/swarm2/client/Piece.js:\n    8      debugger\n    9      for (i=0; i<8; i++){\n   10:       neighbors.push(new Hexagon(id,x,y,type))\n   11      }\n   12      return neighbors\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n    6  \n    7  Canvas.addPieceToBoard = function (e){\n    8:   board.push(new Hexagon (1, e.x, e.y, 'piece'))\n    9  }\n   10  \n\n22 matches across 3 files\n\n\nSearching 8 files for \"addPiecesToBoard\"\n\n/Users/JP/code/swarm2/client/Canvas.js:\n   19        ctx.canvas.width = Canvas.width;\n   20        ctx.canvas.height = Canvas.height;\n   21:       Canvas.addPiecesToBoard()\n   22      }\n   23    }\n   ..\n   28    }\n   29  \n   30:   Canvas.addPiecesToBoard = function(){\n   31      for (piece in board) {\n   32        board[piece].draw(ctx)\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n   29  //       selection = null;\n   30  //       Canvas.clear();\n   31: //       Canvas.addPiecesToBoard();\n   32  \n   33  //     }\n   ..\n   70  //       Canvas.updateHexagonPoints(e)\n   71  //       Canvas.clear()\n   72: //       Canvas.addPiecesToBoard()\n   73  //       // Canvas.lineBetweenClosest(Canvas.getClosestPiece())\n   74  //       // Canvas.checkSnap()\n\n4 matches across 2 files\n\n\nSearching 8 files for \"drawNeighbors\"\n\n/Users/JP/code/swarm2/client/Canvas.js:\n   31    Canvas.drawAllPieces = function(){\n   32      Canvas.drawBoardPieces()\n   33:     Canvas.drawNeighbors()\n   34    }\n   35  \n   ..\n   40    }\n   41  \n   42:   Canvas.drawNeighbors = function(){\n   43      for(piece in board){\n   44        for(neighbor in board[piece].neighbors){\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n    9  }\n   10  \n   11: Canvas.drawNeighbors = function(){\n   12    for(piece in board){\n   13      for(neighbor in board[piece].neighbors){\n\n3 matches across 2 files\n\n\nSearching 8 files for \"drawNeighbors\"\n\n/Users/JP/code/swarm2/client/Canvas.js:\n   31    Canvas.drawAllPieces = function(){\n   32      Canvas.drawBoardPieces()\n   33:     Canvas.drawNeighbors()\n   34    }\n   35  \n   ..\n   40    }\n   41  \n   42:   Canvas.drawNeighbors = function(){\n   43      for(piece in board){\n   44        for(neighbor in board[piece].neighbors){\n\n2 matches in 1 file\n",
 			"settings":
 			{
-				"buffer_size": 3485,
+				"buffer_size": 5283,
 				"line_ending": "Unix",
 				"name": "Find Results",
 				"scratch": true
@@ -557,7 +557,7 @@
 			"file": "PieceMovement.js",
 			"settings":
 			{
-				"buffer_size": 2429,
+				"buffer_size": 2213,
 				"line_ending": "Unix"
 			}
 		},
@@ -876,6 +876,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"allPieces",
+			"debugger",
+			"neighbor",
+			"drawNeighbors",
+			"addPiecesToBoard",
 			"strokeStyle",
 			"DRAWSTATS",
 			"debugger",
@@ -998,12 +1003,7 @@
 			"config.server_search_url",
 			"Honeybadger::Rack",
 			"createdb",
-			"assemble_query",
-			"sqlite",
-			"lite",
-			"sq",
-			"schedule_survey",
-			"plan"
+			"assemble_query"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1011,6 +1011,8 @@
 		"regex": false,
 		"replace_history":
 		[
+			"drawGhost",
+			"drawBoardPieces",
 			".form-actions",
 			"search = window.search || {}",
 			"\nhttp://",
@@ -1039,7 +1041,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -1075,15 +1077,15 @@
 					"file": "Canvas.js",
 					"settings":
 					{
-						"buffer_size": 816,
+						"buffer_size": 1078,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5,
-								5
+								964,
+								964
 							]
 						],
 						"settings":
@@ -1093,7 +1095,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 406.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1121,7 +1123,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 4010.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1130,7 +1132,7 @@
 					"buffer": 3,
 					"settings":
 					{
-						"buffer_size": 3485,
+						"buffer_size": 5283,
 						"regions":
 						{
 							"match":
@@ -1237,6 +1239,42 @@
 									[
 										3405,
 										3408
+									],
+									[
+										3683,
+										3699
+									],
+									[
+										3767,
+										3783
+									],
+									[
+										4005,
+										4021
+									],
+									[
+										4155,
+										4171
+									],
+									[
+										4488,
+										4501
+									],
+									[
+										4564,
+										4577
+									],
+									[
+										4757,
+										4770
+									],
+									[
+										5072,
+										5085
+									],
+									[
+										5148,
+										5161
 									]
 								],
 								"scope": ""
@@ -1245,14 +1283,14 @@
 						"selection":
 						[
 							[
-								680,
-								680
+								4895,
+								4895
 							]
 						],
 						"settings":
 						{
 							"detect_indentation": false,
-							"output_tag": 4,
+							"output_tag": 7,
 							"result_base_dir": "",
 							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
 							"result_line_regex": "^ +([0-9]+):",
@@ -1261,7 +1299,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 707.0,
+						"translation.y": 3652.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1271,15 +1309,15 @@
 					"file": "PieceMovement.js",
 					"settings":
 					{
-						"buffer_size": 2429,
+						"buffer_size": 2213,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								312,
-								312
+								757,
+								757
 							]
 						],
 						"settings":
@@ -1287,7 +1325,7 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 160.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -1310,7 +1348,9 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,

@@ -18,18 +18,32 @@ Meteor.startup(function(){
       Canvas.height = window.innerHeight;
       ctx.canvas.width = Canvas.width;
       ctx.canvas.height = Canvas.height;
-      Canvas.addPiecesToBoard()
+      Canvas.drawBoardPieces()
     }
   }
 
   Canvas.clear = function(){
-    Swarm.ctx.clearRect(0,0, Swarm.ctx.canvas.clientWidth, Swarm.ctx.canvas.clientHeight)
+    ctx.clearRect(0,0, ctx.canvas.clientWidth, ctx.canvas.clientHeight)
 
   }
 
-  Canvas.addPiecesToBoard = function(){
+
+  Canvas.drawAllPieces = function(){
+    Canvas.drawBoardPieces()
+    Canvas.drawGhost()
+  }
+
+  Canvas.drawBoardPieces = function(){
     for (piece in board) {
       board[piece].draw(ctx)
+    }
+  }
+
+  Canvas.drawGhost = function(){
+    for(piece in board){
+      for(ghost in board[piece].neighbors){
+        board[piece].neighbors[ghost].draw(ctx)
+      }
     }
   }
 

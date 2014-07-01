@@ -6,5 +6,6 @@ if (Meteor.isClient) {
       Canvas.resizeCanvas()
 
 
+
   })
 };
