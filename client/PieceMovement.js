@@ -22,14 +22,15 @@ Meteor.startup(function () {
   })
 
   canvas.addEventListener('mouseup', function(e){
-    selectedPiece.tryMove();
     Canvas.deselectPiece();
     Canvas.clear();
     Canvas.drawBoardPieces();
   })
 
   Canvas.addPieceToBoard = function (e){
-    board.push(new Hexagon ((board.length + 1) , e.x, e.y, 'piece', Hexagon.generateNeighbors(e.x, e.y)))
+    newPiece = (new Hexagon ((board.length + 1) , e.x, e.y, 'piece'))
+    // newPiece.neighbors = newPiece.generateNeighbors(e.x, e.y)
+    board.push(newPiece)
   }
 
   Canvas.returnClickedPiece = function(e){
@@ -94,60 +95,6 @@ Meteor.startup(function () {
     }
   }
 
-  Hexagon.prototype.updateNeighbors = function(){
-
-  }
-
-  Hexagon.prototype.returnOwnNeighbors = function(){
-    return this.neighbors
-  }
-
-  Canvas.returnAllNeighbors = function(){
-    ghostArray = [];
-    board.forEach(function(hexagon){
-      neighbors = (hexagon.returnOwnNeighbors())
-      neighbors.forEach(function(neighbor){
-        ghostArray.push(neighbor)
-      })
-    })
-    return ghostArray
-  }
-
-  Hexagon.prototype.returnIfOnGhost = function(){
-    point = this.MidPoint
-    ghosts = Canvas.returnAllNeighbors()
-    pieceLandedOn = null;
-    ghosts.forEach(function(ghost){
-      if(ghost.isInBounds(point.X,point.Y)){
-        pieceLandedOn = ghost;
-      }
-    })
-    return pieceLandedOn;
-  }
-
-  Hexagon.prototype.copyPoints = function(pointsToCopy){
-    this.Points.forEach(function(point, num){
-      
-      point.X = pointsToCopy.Points[num].X;
-      point.Y = pointsToCopy.Points[num.Y];
-    })
-    //update all the other helper points
-    this.TopLeftPoint.X     = pointsToCopy.TopLeftPoint.X;
-    this.TopLeftPoint.Y     = pointsToCopy.TopLeftPoint.Y ;
-    this.BottomRightPoint.X = pointsToCopy.BottomRightPoint.X;
-    this.BottomRightPoint.Y = pointsToCopy.BottomRightPoint.Y;
-    this.x                  = pointsToCopy.x ;
-    this.y                  = pointsToCopy.y ;
-    this.x1                 = pointsToCopy.x1;
-    this.y1                 = pointsToCopy.y1;
-    this.MidPoint.X         = pointsToCopy.MidPoint.X;
-    this.MidPoint.Y         = pointsToCopy.MidPoint.Y;
-  }
-
-  Hexagon.prototype.tryMove = function(){
-    spot = selectedPiece.returnIfOnGhost();
-    selectedPiece.copyPoints(spot);
-  }
 
 
 

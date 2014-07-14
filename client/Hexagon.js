@@ -36,13 +36,17 @@ Meteor.startup(function(){
    * A Hexagon is a 6 sided polygon, our hexes don't have to be symmetrical, i.e. ratio of width to height could be 4 to 3
    * @constructor
    */
-  Hexagon = function(id, x, y, type, neighbors) {
+  Hexagon = function(id, x, y, type) {
     // debugger
     this.Points = [];//Polygon Base
     this.type = type
-    this.neighbors = neighbors
+    
+    this.neighbors = [];
+    this.generateNeighbors(x,y);
     this.selected = false;
     this.dragging = false;
+
+
 
     var x1 = null;
     var y1 = null;
