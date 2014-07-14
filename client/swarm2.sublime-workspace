@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"deb",
+				"debugger"
+			],
+			[
 				"dra",
 				"drawNeighbors"
 			],
@@ -510,20 +514,25 @@
 			[
 				"msg_",
 				"msg_thread_id"
-			],
-			[
-				"font",
-				"font-weight"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
+			"contents": "1. double click on page to add piece\n  a. piece is added to board (piece array)\n    - x,y of event should be midpoint of piece\n\n  b. board is rendered\n\n2. click and drag a piece to move it\n  a. mousedown in piece turns dragging to 'true'\n    when dragging is true and there is more than one piece, draw ghosts\n  b. mouseup turns dragging to false\n\n3. dragging a piece in to a ghost piece adds it to the ghost parent's neighbor array",
+			"settings":
+			{
+				"buffer_size": 432,
+				"line_ending": "Unix",
+				"name": "1. double click on page to add piece"
+			}
+		},
+		{
 			"file": "/Users/JP/code/swarm2/swarm.js",
 			"settings":
 			{
-				"buffer_size": 111,
+				"buffer_size": 112,
 				"line_ending": "Unix"
 			}
 		},
@@ -531,7 +540,7 @@
 			"file": "Canvas.js",
 			"settings":
 			{
-				"buffer_size": 1078,
+				"buffer_size": 1060,
 				"line_ending": "Unix"
 			}
 		},
@@ -539,15 +548,15 @@
 			"file": "Hexagon.js",
 			"settings":
 			{
-				"buffer_size": 7550,
+				"buffer_size": 8460,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "Searching 8 files for \"debugger\"\n\n0 matches across 0 files\n\n\nSearching 8 files for \"ghost\"\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n    6  \n    7  Canvas.addPieceToBoard = function (e){\n    8:   board.push(new Hexagon (1, e.x, e.y, 'ghost'))\n    9  }\n   10  \n\n1 match in 1 file\n\n\nSearching 8 files for \"generateNeighbors\"\n\n/Users/JP/code/swarm2/client/Piece.js:\n    2    // Hexagon.prototype.type = this.type = type || \"\"\n    3  \n    4:   Hexagon.generateNeighbors = function() {\n    5      var neighbors = []\n    6      // var x = self.MidPoint.X\n    .\n   13    }\n   14  \n   15:   Hexagon.prototype.neighbors = Hexagon.generateNeighbors()\n   16  })\n\n2 matches in 1 file\n\n\nSearching 8 files for \"new\"\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n   45        x1 = (Hexagon.Static.WIDTH - Hexagon.Static.SIDE)/2;\n   46        y1 = (Hexagon.Static.HEIGHT / 2);\n   47:       this.Points.push(new Point(x1 + x, y));\n   48:       this.Points.push(new Point(x1 + Hexagon.Static.SIDE + x, y));\n   49:       this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + y));\n   50:       this.Points.push(new Point(x1 + Hexagon.Static.SIDE + x, Hexagon.Static.HEIGHT + y));\n   51:       this.Points.push(new Point(x1 + x, Hexagon.Static.HEIGHT + y));\n   52:       this.Points.push(new Point(x, y1 + y));\n   53      }\n   54      else {\n   55        x1 = (Hexagon.Static.WIDTH / 2);\n   56        y1 = (Hexagon.Static.HEIGHT - Hexagon.Static.SIDE)/2;\n   57:       this.Points.push(new Point(x1 + x, y));\n   58:       this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + y));\n   59:       this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + Hexagon.Static.SIDE + y));\n   60:       this.Points.push(new Point(x1 + x, Hexagon.Static.HEIGHT + y));\n   61:       this.Points.push(new Point(x, y1 + Hexagon.Static.SIDE + y));\n   62:       this.Points.push(new Point(x, y1 + y));\n   63      }\n   64  \n   ..\n   70      this.y1 = y1;\n   71  \n   72:     this.TopLeftPoint = new Point(this.x, this.y);\n   73:     this.BottomRightPoint = new Point(this.x + Hexagon.Static.WIDTH, this.y + Hexagon.Static.HEIGHT);\n   74:     this.MidPoint = new Point(this.x + (Hexagon.Static.WIDTH / 2), this.y + (Hexagon.Static.HEIGHT / 2));\n   75  \n   76:     this.P1 = new Point(x + x1, y + y1);\n   77  \n   78      this.selected = false;\n   ..\n   88      else\n   89        ctx.strokeStyle = \"black\";\n   90:     ctx.lineWidth = 1;\n   91      ctx.beginPath();\n   92      ctx.moveTo(this.Points[0].X, this.Points[0].Y);\n   ..\n  124      {\n  125        ctx.strokeStyle = \"black\";\n  126:       ctx.lineWidth = 2;\n  127        //draw our x1, y1, and z\n  128        ctx.beginPath();\n  ...\n  152     */\n  153    Hexagon.prototype.isInBounds = function(x, y) {\n  154:     return this.Contains(new Point(x, y));\n  155    };\n  156      \n  ...\n  184      {\n  185        //turn our absolute point into a relative point for comparing with the polygon's points\n  186:       //var pRel = new Point(p.X - this.x, p.Y - this.y);\n  187        var i, j = 0;\n  188        for (i = 0, j = this.Points.length - 1; i < this.Points.length; j = i++)\n\n/Users/JP/code/swarm2/client/Piece.js:\n    8      debugger\n    9      for (i=0; i<8; i++){\n   10:       neighbors.push(new Hexagon(id,x,y,type))\n   11      }\n   12      return neighbors\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n    6  \n    7  Canvas.addPieceToBoard = function (e){\n    8:   board.push(new Hexagon (1, e.x, e.y, 'piece'))\n    9  }\n   10  \n\n22 matches across 3 files\n\n\nSearching 8 files for \"addPiecesToBoard\"\n\n/Users/JP/code/swarm2/client/Canvas.js:\n   19        ctx.canvas.width = Canvas.width;\n   20        ctx.canvas.height = Canvas.height;\n   21:       Canvas.addPiecesToBoard()\n   22      }\n   23    }\n   ..\n   28    }\n   29  \n   30:   Canvas.addPiecesToBoard = function(){\n   31      for (piece in board) {\n   32        board[piece].draw(ctx)\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n   29  //       selection = null;\n   30  //       Canvas.clear();\n   31: //       Canvas.addPiecesToBoard();\n   32  \n   33  //     }\n   ..\n   70  //       Canvas.updateHexagonPoints(e)\n   71  //       Canvas.clear()\n   72: //       Canvas.addPiecesToBoard()\n   73  //       // Canvas.lineBetweenClosest(Canvas.getClosestPiece())\n   74  //       // Canvas.checkSnap()\n\n4 matches across 2 files\n\n\nSearching 8 files for \"drawNeighbors\"\n\n/Users/JP/code/swarm2/client/Canvas.js:\n   31    Canvas.drawAllPieces = function(){\n   32      Canvas.drawBoardPieces()\n   33:     Canvas.drawNeighbors()\n   34    }\n   35  \n   ..\n   40    }\n   41  \n   42:   Canvas.drawNeighbors = function(){\n   43      for(piece in board){\n   44        for(neighbor in board[piece].neighbors){\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n    9  }\n   10  \n   11: Canvas.drawNeighbors = function(){\n   12    for(piece in board){\n   13      for(neighbor in board[piece].neighbors){\n\n3 matches across 2 files\n\n\nSearching 8 files for \"drawNeighbors\"\n\n/Users/JP/code/swarm2/client/Canvas.js:\n   31    Canvas.drawAllPieces = function(){\n   32      Canvas.drawBoardPieces()\n   33:     Canvas.drawNeighbors()\n   34    }\n   35  \n   ..\n   40    }\n   41  \n   42:   Canvas.drawNeighbors = function(){\n   43      for(piece in board){\n   44        for(neighbor in board[piece].neighbors){\n\n2 matches in 1 file\n",
+			"contents": "Searching 8 files for \"debugger\"\n\n0 matches across 0 files\n\n\nSearching 8 files for \"ghost\"\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n    6  \n    7  Canvas.addPieceToBoard = function (e){\n    8:   board.push(new Hexagon (1, e.x, e.y, 'ghost'))\n    9  }\n   10  \n\n1 match in 1 file\n\n\nSearching 8 files for \"generateNeighbors\"\n\n/Users/JP/code/swarm2/client/Piece.js:\n    2    // Hexagon.prototype.type = this.type = type || \"\"\n    3  \n    4:   Hexagon.generateNeighbors = function() {\n    5      var neighbors = []\n    6      // var x = self.MidPoint.X\n    .\n   13    }\n   14  \n   15:   Hexagon.prototype.neighbors = Hexagon.generateNeighbors()\n   16  })\n\n2 matches in 1 file\n\n\nSearching 8 files for \"new\"\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n   45        x1 = (Hexagon.Static.WIDTH - Hexagon.Static.SIDE)/2;\n   46        y1 = (Hexagon.Static.HEIGHT / 2);\n   47:       this.Points.push(new Point(x1 + x, y));\n   48:       this.Points.push(new Point(x1 + Hexagon.Static.SIDE + x, y));\n   49:       this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + y));\n   50:       this.Points.push(new Point(x1 + Hexagon.Static.SIDE + x, Hexagon.Static.HEIGHT + y));\n   51:       this.Points.push(new Point(x1 + x, Hexagon.Static.HEIGHT + y));\n   52:       this.Points.push(new Point(x, y1 + y));\n   53      }\n   54      else {\n   55        x1 = (Hexagon.Static.WIDTH / 2);\n   56        y1 = (Hexagon.Static.HEIGHT - Hexagon.Static.SIDE)/2;\n   57:       this.Points.push(new Point(x1 + x, y));\n   58:       this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + y));\n   59:       this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + Hexagon.Static.SIDE + y));\n   60:       this.Points.push(new Point(x1 + x, Hexagon.Static.HEIGHT + y));\n   61:       this.Points.push(new Point(x, y1 + Hexagon.Static.SIDE + y));\n   62:       this.Points.push(new Point(x, y1 + y));\n   63      }\n   64  \n   ..\n   70      this.y1 = y1;\n   71  \n   72:     this.TopLeftPoint = new Point(this.x, this.y);\n   73:     this.BottomRightPoint = new Point(this.x + Hexagon.Static.WIDTH, this.y + Hexagon.Static.HEIGHT);\n   74:     this.MidPoint = new Point(this.x + (Hexagon.Static.WIDTH / 2), this.y + (Hexagon.Static.HEIGHT / 2));\n   75  \n   76:     this.P1 = new Point(x + x1, y + y1);\n   77  \n   78      this.selected = false;\n   ..\n   88      else\n   89        ctx.strokeStyle = \"black\";\n   90:     ctx.lineWidth = 1;\n   91      ctx.beginPath();\n   92      ctx.moveTo(this.Points[0].X, this.Points[0].Y);\n   ..\n  124      {\n  125        ctx.strokeStyle = \"black\";\n  126:       ctx.lineWidth = 2;\n  127        //draw our x1, y1, and z\n  128        ctx.beginPath();\n  ...\n  152     */\n  153    Hexagon.prototype.isInBounds = function(x, y) {\n  154:     return this.Contains(new Point(x, y));\n  155    };\n  156      \n  ...\n  184      {\n  185        //turn our absolute point into a relative point for comparing with the polygon's points\n  186:       //var pRel = new Point(p.X - this.x, p.Y - this.y);\n  187        var i, j = 0;\n  188        for (i = 0, j = this.Points.length - 1; i < this.Points.length; j = i++)\n\n/Users/JP/code/swarm2/client/Piece.js:\n    8      debugger\n    9      for (i=0; i<8; i++){\n   10:       neighbors.push(new Hexagon(id,x,y,type))\n   11      }\n   12      return neighbors\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n    6  \n    7  Canvas.addPieceToBoard = function (e){\n    8:   board.push(new Hexagon (1, e.x, e.y, 'piece'))\n    9  }\n   10  \n\n22 matches across 3 files\n\n\nSearching 8 files for \"addPiecesToBoard\"\n\n/Users/JP/code/swarm2/client/Canvas.js:\n   19        ctx.canvas.width = Canvas.width;\n   20        ctx.canvas.height = Canvas.height;\n   21:       Canvas.addPiecesToBoard()\n   22      }\n   23    }\n   ..\n   28    }\n   29  \n   30:   Canvas.addPiecesToBoard = function(){\n   31      for (piece in board) {\n   32        board[piece].draw(ctx)\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n   29  //       selection = null;\n   30  //       Canvas.clear();\n   31: //       Canvas.addPiecesToBoard();\n   32  \n   33  //     }\n   ..\n   70  //       Canvas.updateHexagonPoints(e)\n   71  //       Canvas.clear()\n   72: //       Canvas.addPiecesToBoard()\n   73  //       // Canvas.lineBetweenClosest(Canvas.getClosestPiece())\n   74  //       // Canvas.checkSnap()\n\n4 matches across 2 files\n\n\nSearching 8 files for \"drawNeighbors\"\n\n/Users/JP/code/swarm2/client/Canvas.js:\n   31    Canvas.drawAllPieces = function(){\n   32      Canvas.drawBoardPieces()\n   33:     Canvas.drawNeighbors()\n   34    }\n   35  \n   ..\n   40    }\n   41  \n   42:   Canvas.drawNeighbors = function(){\n   43      for(piece in board){\n   44        for(neighbor in board[piece].neighbors){\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n    9  }\n   10  \n   11: Canvas.drawNeighbors = function(){\n   12    for(piece in board){\n   13      for(neighbor in board[piece].neighbors){\n\n3 matches across 2 files\n\n\nSearching 8 files for \"drawNeighbors\"\n\n/Users/JP/code/swarm2/client/Canvas.js:\n   31    Canvas.drawAllPieces = function(){\n   32      Canvas.drawBoardPieces()\n   33:     Canvas.drawNeighbors()\n   34    }\n   35  \n   ..\n   40    }\n   41  \n   42:   Canvas.drawNeighbors = function(){\n   43      for(piece in board){\n   44        for(neighbor in board[piece].neighbors){\n\n2 matches in 1 file\n\n\nSearching 8 files for \"dbl\"\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n    1  Meteor.startup(function () {\n    2:   canvas.addEventListener('dblclick', function(e){\n    3          Canvas.addPieceToBoard(e)\n    4          Canvas.drawAllPieces()\n\n1 match in 1 file\n\n\nSearching 8 files for \"addpiece\"\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n    1  Meteor.startup(function () {\n    2    canvas.addEventListener('dblclick', function(e){\n    3:         Canvas.addPieceToBoard(e)\n    4          Canvas.drawAllPieces()\n    5        })\n    6  \n    7  \n    8: Canvas.addPieceToBoard = function (e){\n    9    board.push(new Hexagon (1, e.x, e.y, 'piece', Hexagon.generateNeighbors(e.x, e.y)))\n   10  }\n\n2 matches in 1 file\n\n\nSearching 9 files for \"Hexagon\"\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n   34  \n   35    /**\n   36:    * A Hexagon is a 6 sided polygon, our hexes don't have to be symmetrical, i.e. ratio of width to height could be 4 to 3\n   37     * @constructor\n   38     */\n   39:   Hexagon = function(id, x, y, type, neighbors) {\n   40      this.Points = [];//Polygon Base\n   41      this.type = type\n   ..\n   43      var x1 = null;\n   44      var y1 = null;\n   45:     if(Hexagon.Static.ORIENTATION == Hexagon.Orientation.Normal) {\n   46:       x1 = (Hexagon.Static.WIDTH - Hexagon.Static.SIDE)/2;\n   47:       y1 = (Hexagon.Static.HEIGHT / 2);\n   48        this.Points.push(new Point(x1 + x, y));\n   49:       this.Points.push(new Point(x1 + Hexagon.Static.SIDE + x, y));\n   50:       this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + y));\n   51:       this.Points.push(new Point(x1 + Hexagon.Static.SIDE + x, Hexagon.Static.HEIGHT + y));\n   52:       this.Points.push(new Point(x1 + x, Hexagon.Static.HEIGHT + y));\n   53        this.Points.push(new Point(x, y1 + y));\n   54      }\n   55      else {\n   56        debugger\n   57:       x1 = (Hexagon.Static.WIDTH / 2);\n   58:       y1 = (Hexagon.Static.HEIGHT - Hexagon.Static.SIDE)/2;\n   59        this.Points.push(new Point(x1 + x, y));\n   60:       this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + y));\n   61:       this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + Hexagon.Static.SIDE + y));\n   62:       this.Points.push(new Point(x1 + x, Hexagon.Static.HEIGHT + y));\n   63:       this.Points.push(new Point(x, y1 + Hexagon.Static.SIDE + y));\n   64        this.Points.push(new Point(x, y1 + y));\n   65      }\n   ..\n   73  \n   74      this.TopLeftPoint = new Point(this.x, this.y);\n   75:     this.BottomRightPoint = new Point(this.x + Hexagon.Static.WIDTH, this.y + Hexagon.Static.HEIGHT);\n   76:     this.MidPoint = new Point(this.x + (Hexagon.Static.WIDTH / 2), this.y + (Hexagon.Static.HEIGHT / 2));\n   77  \n   78      this.P1 = new Point(x + x1, y + y1);\n   ..\n   82  \n   83    /**\n   84:    * draws this Hexagon to the canvas\n   85:    * @this {Hexagon}\n   86     */\n   87:   Hexagon.prototype.draw = function(ctx) {\n   88      if(!this.selected)\n   89        ctx.strokeStyle = \"grey\";\n   ..\n  127      }\n  128  \n  129:     if(Hexagon.Static.DRAWSTATS)\n  130      {\n  131        ctx.strokeStyle = \"black\";\n  ...\n  147        ctx.fillText(\"x\", this.x + this.x1/2, this.P1.Y + 10);\n  148        ctx.fillText(\"y\", this.P1.X + 2, this.y + this.y1/2);\n  149:       ctx.fillText(\"z = \" + Hexagon.Static.SIDE, this.P1.X, this.P1.Y + this.y1 + 10);\n  150        ctx.fillText(\"(\" + this.x1.toFixed(2) + \",\" + this.y1.toFixed(2) + \")\", this.P1.X, this.P1.Y + 10);\n  151      }\n  ...\n  156  \n  157    /**\n  158:    * Returns true if the x,y coordinates are inside this hexagon\n  159:    * @this {Hexagon}\n  160     * @return {boolean}\n  161     */\n  162:   Hexagon.prototype.isInBounds = function(x, y) {\n  163      return this.Contains(new Point(x, y));\n  164    };\n  ...\n  166  \n  167    /**\n  168:    * Returns true if the point is inside this hexagon, it is a quick contains\n  169:    * @this {Hexagon}\n  170     * @param {Point} p the test point\n  171     * @return {boolean}\n  172     */\n  173:   Hexagon.prototype.isInHexBounds = function(/*Point*/ p) {\n  174      if(this.TopLeftPoint.X < p.X && this.TopLeftPoint.Y < p.Y &&\n  175         p.X < this.BottomRightPoint.X && p.Y < this.BottomRightPoint.Y)\n  ...\n  183    //http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html#The%20C%20Code\n  184    /**\n  185:    * Returns true if the point is inside this hexagon, it first uses the quick isInHexBounds contains, then check the boundaries\n  186:    * @this {Hexagon}\n  187     * @param {Point} p the test point\n  188     * @return {boolean}\n  189     */\n  190:   Hexagon.prototype.Contains = function(/*Point*/ p) {\n  191      var isIn = false;\n  192      if (this.isInHexBounds(p))\n  ...\n  218    * Returns absolute distance in pixels from the mid point of this hex to the given point\n  219    * Provided by: Ian (Disqus user: boingy)\n  220:   * @this {Hexagon}\n  221    * @param {Point} p the test point\n  222    * @return {number} the distance in pixels\n  223    */\n  224:   Hexagon.prototype.distanceFromMidPoint = function(/*Point*/ p) {\n  225      // Pythagoras' Theorem: Square of hypotenuse = sum of squares of other two sides\n  226      var deltaX = this.MidPoint.X - p.X;\n  ...\n  231    };\n  232  \n  233:   Hexagon.Orientation = {\n  234      Normal: 0,\n  235      Rotated: 1\n  236    };\n  237  \n  238:   Hexagon.Static = {HEIGHT:90\n  239              , WIDTH:90\n  240              , SIDE:50.0\n  241:             , ORIENTATION:Hexagon.Orientation.Rotated\n  242:             , DRAWSTATS: false};//hexagons will have 25 unit sides for now\n  243  \n  244  })\n\n/Users/JP/code/swarm2/client/Piece.js:\n    1  Meteor.startup(function(){\n    2:   // Hexagon.prototype.type = this.type = type || \"\"\n    3  \n    4:   Hexagon.generateNeighbors = function(x,y) {\n    5      var neighbors = []\n    6      var xPositions = [];\n    7      var yPositions = [];\n    8:     xPositions.push( x - (Hexagon.Static.WIDTH/2) )\n    9:     xPositions.push( x + (Hexagon.Static.WIDTH/2) )\n   10:     xPositions.push( x + (Hexagon.Static.WIDTH) )\n   11:     xPositions.push( x + (Hexagon.Static.WIDTH/2) )\n   12:     xPositions.push( x - (Hexagon.Static.WIDTH/2) )\n   13:     xPositions.push( x - (Hexagon.Static.WIDTH) )\n   14  \n   15:     yPositions.push( y - (Hexagon.Static.HEIGHT * (3/4)) )\n   16:     yPositions.push( y - (Hexagon.Static.HEIGHT * (3/4)) )\n   17      yPositions.push( y )\n   18:     yPositions.push( y + (Hexagon.Static.HEIGHT * (3/4)) )\n   19:     yPositions.push( y + (Hexagon.Static.HEIGHT * (3/4)) )\n   20      yPositions.push( y )\n   21  \n   ..\n   23  \n   24      for (i=0; i<8; i++){\n   25:       neighbors.push(new Hexagon(i.toString(),xPositions[i],yPositions[i],'ghost'))\n   26      }\n   27      return neighbors\n   28    }\n   29  \n   30:   Hexagon.prototype.neighbors = []\n   31  })\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n    7  \n    8  Canvas.addPieceToBoard = function (e){\n    9:   board.push(new Hexagon (1, e.x, e.y, 'piece', Hexagon.generateNeighbors(e.x, e.y)))\n   10  }\n   11  \n   ..\n   13  \n   14    Canvas.selectHex = function(e){\n   15:     board.forEach(function(hexagon){\n   16:       if(hexagon.isInBounds(e.x,e.y) && dragging == false){\n   17          dragging = true;\n   18:         hexagon.selected = true\n   19:         selection = hexagon;\n   20:       } else if (hexagon.isInBounds(e.x,e.y) && dragging == true && selection == hexagon){\n   21          dragging = false;\n   22:         hexagon.selected = false;\n   23          selection = null;\n   24          Canvas.clear();\n   ..\n   30  \n   31  \n   32: // Canvas.updateHexagonPoints = function(e){\n   33  //   //Update all 6 Points\n   34  //   selection.Points.forEach(function(point){\n   ..\n   62        if(selection != null){\n   63          // Canvas.getClosestPiece()\n   64:         Canvas.updateHexagonPoints(e)\n   65          Canvas.clear()\n   66          Canvas.drawAllPieces()\n\n69 matches across 3 files\n\n\nSearching 9 files for \"Hexagon\"\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n   34  \n   35    /**\n   36:    * A Hexagon is a 6 sided polygon, our hexes don't have to be symmetrical, i.e. ratio of width to height could be 4 to 3\n   37     * @constructor\n   38     */\n   39:   Hexagon = function(id, x, y, type, neighbors) {\n   40      this.Points = [];//Polygon Base\n   41      this.type = type\n   ..\n   43      var x1 = null;\n   44      var y1 = null;\n   45:     if(Hexagon.Static.ORIENTATION == Hexagon.Orientation.Normal) {\n   46:       x1 = (Hexagon.Static.WIDTH - Hexagon.Static.SIDE)/2;\n   47:       y1 = (Hexagon.Static.HEIGHT / 2);\n   48        this.Points.push(new Point(x1 + x, y));\n   49:       this.Points.push(new Point(x1 + Hexagon.Static.SIDE + x, y));\n   50:       this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + y));\n   51:       this.Points.push(new Point(x1 + Hexagon.Static.SIDE + x, Hexagon.Static.HEIGHT + y));\n   52:       this.Points.push(new Point(x1 + x, Hexagon.Static.HEIGHT + y));\n   53        this.Points.push(new Point(x, y1 + y));\n   54      }\n   55      else {\n   56        debugger\n   57:       x1 = (Hexagon.Static.WIDTH / 2);\n   58:       y1 = (Hexagon.Static.HEIGHT - Hexagon.Static.SIDE)/2;\n   59        this.Points.push(new Point(x1 + x, y));\n   60:       this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + y));\n   61:       this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + Hexagon.Static.SIDE + y));\n   62:       this.Points.push(new Point(x1 + x, Hexagon.Static.HEIGHT + y));\n   63:       this.Points.push(new Point(x, y1 + Hexagon.Static.SIDE + y));\n   64        this.Points.push(new Point(x, y1 + y));\n   65      }\n   ..\n   73  \n   74      this.TopLeftPoint = new Point(this.x, this.y);\n   75:     this.BottomRightPoint = new Point(this.x + Hexagon.Static.WIDTH, this.y + Hexagon.Static.HEIGHT);\n   76:     this.MidPoint = new Point(this.x + (Hexagon.Static.WIDTH / 2), this.y + (Hexagon.Static.HEIGHT / 2));\n   77  \n   78      this.P1 = new Point(x + x1, y + y1);\n   ..\n   82  \n   83    /**\n   84:    * draws this Hexagon to the canvas\n   85:    * @this {Hexagon}\n   86     */\n   87:   Hexagon.prototype.draw = function(ctx) {\n   88      if(!this.selected)\n   89        ctx.strokeStyle = \"grey\";\n   ..\n  127      }\n  128  \n  129:     if(Hexagon.Static.DRAWSTATS)\n  130      {\n  131        ctx.strokeStyle = \"black\";\n  ...\n  147        ctx.fillText(\"x\", this.x + this.x1/2, this.P1.Y + 10);\n  148        ctx.fillText(\"y\", this.P1.X + 2, this.y + this.y1/2);\n  149:       ctx.fillText(\"z = \" + Hexagon.Static.SIDE, this.P1.X, this.P1.Y + this.y1 + 10);\n  150        ctx.fillText(\"(\" + this.x1.toFixed(2) + \",\" + this.y1.toFixed(2) + \")\", this.P1.X, this.P1.Y + 10);\n  151      }\n  ...\n  156  \n  157    /**\n  158:    * Returns true if the x,y coordinates are inside this hexagon\n  159:    * @this {Hexagon}\n  160     * @return {boolean}\n  161     */\n  162:   Hexagon.prototype.isInBounds = function(x, y) {\n  163      return this.Contains(new Point(x, y));\n  164    };\n  ...\n  166  \n  167    /**\n  168:    * Returns true if the point is inside this hexagon, it is a quick contains\n  169:    * @this {Hexagon}\n  170     * @param {Point} p the test point\n  171     * @return {boolean}\n  172     */\n  173:   Hexagon.prototype.isInHexBounds = function(/*Point*/ p) {\n  174      if(this.TopLeftPoint.X < p.X && this.TopLeftPoint.Y < p.Y &&\n  175         p.X < this.BottomRightPoint.X && p.Y < this.BottomRightPoint.Y)\n  ...\n  183    //http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html#The%20C%20Code\n  184    /**\n  185:    * Returns true if the point is inside this hexagon, it first uses the quick isInHexBounds contains, then check the boundaries\n  186:    * @this {Hexagon}\n  187     * @param {Point} p the test point\n  188     * @return {boolean}\n  189     */\n  190:   Hexagon.prototype.Contains = function(/*Point*/ p) {\n  191      var isIn = false;\n  192      if (this.isInHexBounds(p))\n  ...\n  218    * Returns absolute distance in pixels from the mid point of this hex to the given point\n  219    * Provided by: Ian (Disqus user: boingy)\n  220:   * @this {Hexagon}\n  221    * @param {Point} p the test point\n  222    * @return {number} the distance in pixels\n  223    */\n  224:   Hexagon.prototype.distanceFromMidPoint = function(/*Point*/ p) {\n  225      // Pythagoras' Theorem: Square of hypotenuse = sum of squares of other two sides\n  226      var deltaX = this.MidPoint.X - p.X;\n  ...\n  231    };\n  232  \n  233:   Hexagon.Orientation = {\n  234      Normal: 0,\n  235      Rotated: 1\n  236    };\n  237  \n  238:   Hexagon.Static = {HEIGHT:90\n  239              , WIDTH:90\n  240              , SIDE:50.0\n  241:             , ORIENTATION:Hexagon.Orientation.Rotated\n  242:             , DRAWSTATS: false};//hexagons will have 25 unit sides for now\n  243  \n  244  })\n\n/Users/JP/code/swarm2/client/Piece.js:\n    1  Meteor.startup(function(){\n    2:   // Hexagon.prototype.type = this.type = type || \"\"\n    3  \n    4:   Hexagon.generateNeighbors = function(x,y) {\n    5      var neighbors = []\n    6      var xPositions = [];\n    7      var yPositions = [];\n    8:     xPositions.push( x - (Hexagon.Static.WIDTH/2) )\n    9:     xPositions.push( x + (Hexagon.Static.WIDTH/2) )\n   10:     xPositions.push( x + (Hexagon.Static.WIDTH) )\n   11:     xPositions.push( x + (Hexagon.Static.WIDTH/2) )\n   12:     xPositions.push( x - (Hexagon.Static.WIDTH/2) )\n   13:     xPositions.push( x - (Hexagon.Static.WIDTH) )\n   14  \n   15:     yPositions.push( y - (Hexagon.Static.HEIGHT * (3/4)) )\n   16:     yPositions.push( y - (Hexagon.Static.HEIGHT * (3/4)) )\n   17      yPositions.push( y )\n   18:     yPositions.push( y + (Hexagon.Static.HEIGHT * (3/4)) )\n   19:     yPositions.push( y + (Hexagon.Static.HEIGHT * (3/4)) )\n   20      yPositions.push( y )\n   21  \n   ..\n   23  \n   24      for (i=0; i<8; i++){\n   25:       neighbors.push(new Hexagon(i.toString(),xPositions[i],yPositions[i],'ghost'))\n   26      }\n   27      return neighbors\n   28    }\n   29  \n   30:   Hexagon.prototype.neighbors = []\n   31  })\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n    7  \n    8  Canvas.addPieceToBoard = function (e){\n    9:   board.push(new Hexagon (1, e.x, e.y, 'piece', Hexagon.generateNeighbors(e.x, e.y)))\n   10  }\n   11  \n   ..\n   13  \n   14    Canvas.selectHex = function(e){\n   15:     board.forEach(function(hexagon){\n   16:       if(hexagon.isInBounds(e.x,e.y) && dragging == false){\n   17          dragging = true;\n   18:         hexagon.selected = true\n   19:         selection = hexagon;\n   20:       } else if (hexagon.isInBounds(e.x,e.y) && dragging == true && selection == hexagon){\n   21          dragging = false;\n   22:         hexagon.selected = false;\n   23          selection = null;\n   24          Canvas.clear();\n   ..\n   30  \n   31  \n   32: // Canvas.updateHexagonPoints = function(e){\n   33  //   //Update all 6 Points\n   34  //   selection.Points.forEach(function(point){\n   ..\n   62        if(selection != null){\n   63          // Canvas.getClosestPiece()\n   64:         Canvas.updateHexagonPoints(e)\n   65          Canvas.clear()\n   66          Canvas.drawAllPieces()\n\n69 matches across 3 files\n\n\nSearching 9 files for \"x =\" (whole word)\n\n0 matches across 0 files\n\n\nSearching 9 files for \"x =\"\n\n/Users/JP/code/swarm2/client/Canvas.js:\n    8    Canvas.resizeCanvas = function(){\n    9  \n   10:     ctx = canvas.getContext('2d');\n   11  \n   12      ctx.canvas.width = Canvas.width;\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n    1  Meteor.startup(function(){\n    2:   ctx = canvas.getContext('2d');\n    3  \n    4    /**\n    .\n    7     */\n    8    Point = function(x, y) {\n    9:     this.X = x;\n   10      this.Y = y;\n   11    };\n   ..\n   16     */\n   17    Rectangle = function(x, y, width, height) {\n   18:     this.X = x;\n   19      this.Y = y;\n   20      this.Width = width;\n   ..\n   68      this.Id = id;\n   69  \n   70:     this.x = x;\n   71      this.y = y;\n   72      this.x1 = x1;\n   ..\n  225    Hexagon.prototype.distanceFromMidPoint = function(/*Point*/ p) {\n  226      // Pythagoras' Theorem: Square of hypotenuse = sum of squares of other two sides\n  227:     var deltaX = this.MidPoint.X - p.X;\n  228      var deltaY = this.MidPoint.Y - p.Y;\n  229  \n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n   13  \n   14  \n   15:   Canvas.selectHex = function(e){\n   16      board.forEach(function(hexagon){\n   17        if(hexagon.isInBounds(e.x,e.y) && dragging == false){\n   ..\n   50  // }\n   51  \n   52:   Canvas.dragHex = function(){\n   53       selection = null;\n   54       dragging = false;\n\n8 matches across 3 files\n\n\nSearching 9 files for \"dragHex\"\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n   59  // }\n   60  \n   61:   Canvas.dragHex = function(){\n   62       selection = null;\n   63       dragging = false;\n\n1 match in 1 file\n\n\nSearching 9 files for \"debugger\"\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n   38     */\n   39    Hexagon = function(id, x, y, type, neighbors) {\n   40:     debugger\n   41      this.Points = [];//Polygon Base\n   42      this.type = type\n   ..\n   55      }\n   56      else {\n   57:       // debugger\n   58  \n   59        //midX and midY shift everything to the midpoint of where the cursor clicked\n\n2 matches in 1 file\n\n\nSearching 9 files for \"clearRe\"\n\n/Users/JP/code/swarm2/client/Canvas.js:\n   24  \n   25    Canvas.clear = function(){\n   26:     Swarm.ctx.clearRect(0,0, Swarm.ctx.canvas.clientWidth, Swarm.ctx.canvas.clientHeight)\n   27  \n   28    }\n\n1 match in 1 file\n\n\nSearching 9 files for \"clearRect\"\n\n/Users/JP/code/swarm2/client/Canvas.js:\n   24  \n   25    Canvas.clear = function(){\n   26:     Swarm.ctx.clearRect(0,0, Swarm.ctx.canvas.clientWidth, Swarm.ctx.canvas.clientHeight)\n   27  \n   28    }\n\n1 match in 1 file\n\n\nSearching 9 files for \"//clear\"\n\n0 matches across 0 files\n\n\nSearching 9 files for \"isInBounds\"\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n  167     * @return {boolean}\n  168     */\n  169:   Hexagon.prototype.isInBounds = function(x, y) {\n  170      console.log('inboundss')\n  171      return this.Contains(new Point(x, y));\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n   14    Canvas.selectHex = function(e){\n   15      board.forEach(function(hexagon){\n   16:       if(hexagon.isInBounds(e.x,e.y) && dragging == false){\n   17          dragging = true;\n   18          hexagon.selected = true\n\n2 matches across 2 files\n\n\nSearching 9 files for \"isInBounds\"\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n  167     * @return {boolean}\n  168     */\n  169:   Hexagon.prototype.isInBounds = function(x, y) {\n  170      console.log('inboundss')\n  171      return this.Contains(new Point(x, y));\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n   14    Canvas.selectHex = function(e){\n   15      board.forEach(function(hexagon){\n   16:       if(hexagon.isInBounds(e.x,e.y) && dragging == false){\n   17          dragging = true;\n   18          hexagon.selected = true\n\n2 matches across 2 files\n\n\nSearching 9 files for \"isInHexBounds\"\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n  179     * @return {boolean}\n  180     */\n  181:   Hexagon.prototype.isInHexBounds = function(/*Point*/ p) {\n  182      if(this.TopLeftPoint.X < p.X && this.TopLeftPoint.Y < p.Y &&\n  183         p.X < this.BottomRightPoint.X && p.Y < this.BottomRightPoint.Y)\n  ...\n  191    //http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html#The%20C%20Code\n  192    /**\n  193:    * Returns true if the point is inside this hexagon, it first uses the quick isInHexBounds contains, then check the boundaries\n  194     * @this {Hexagon}\n  195     * @param {Point} p the test point\n  ...\n  198    Hexagon.prototype.Contains = function(/*Point*/ p) {\n  199      var isIn = false;\n  200:     if (this.isInHexBounds(p))\n  201      {\n  202        //turn our absolute point into a relative point for comparing with the polygon's points\n\n3 matches in 1 file\n\n\nSearching 9 files for \"isInBounds\"\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n  167     * @return {boolean}\n  168     */\n  169:   Hexagon.prototype.isInBounds = function(x, y) {\n  170      console.log('inboundss')\n  171      return this.Contains(new Point(x, y));\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n   14    Canvas.selectHex = function(e){\n   15      board.forEach(function(hexagon){\n   16:       if(hexagon.isInBounds(e.x,e.y) && dragging == false){\n   17          dragging = true;\n   18          hexagon.selected = true\n\n2 matches across 2 files\n\n\nSearching 9 files for \"debugger\"\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n   38     */\n   39    Hexagon = function(id, x, y, type, neighbors) {\n   40:     // debugger\n   41      this.Points = [];//Polygon Base\n   42      this.type = type\n   ..\n  220          }\n  221          else\n  222:           {debugger}\n  223        }\n  224      }\n\n2 matches in 1 file\n\n\nSearching 9 files for \"inbounds\"\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n  166     * @return {boolean}\n  167     */\n  168:   Hexagon.prototype.isInBounds = function(x, y) {\n  169:     console.log('inbounds')\n  170      return this.Contains(new Point(x, y));\n  171    };\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n   14    Canvas.selectHex = function(e){\n   15      board.forEach(function(hexagon){\n   16:       if(hexagon.isInBounds(e.x,e.y) && dragging == false){\n   17          dragging = true;\n   18          hexagon.selected = true\n\n3 matches across 2 files\n\n\nSearching 9 files for \"isInBounds\"\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n  166     * @return {boolean}\n  167     */\n  168:   Hexagon.prototype.isInBounds = function(x, y) {\n  169      console.log('inbounds')\n  170      return this.Contains(new Point(x, y));\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n   14    Canvas.selectHex = function(e){\n   15      board.forEach(function(hexagon){\n   16:       if(hexagon.isInBounds(e.x,e.y) && dragging == false){\n   17          dragging = true;\n   18          hexagon.selected = true\n\n2 matches across 2 files\n\n\nSearching 9 files for \"inbounds\"\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n  166     * @return {boolean}\n  167     */\n  168:   Hexagon.prototype.isInBounds = function(x, y) {\n  169:     console.log('inbounds')\n  170      return this.Contains(new Point(x, y));\n  171    };\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n   14    Canvas.selectHex = function(e){\n   15      board.forEach(function(hexagon){\n   16:       if(hexagon.isInBounds(e.x,e.y) && dragging == false){\n   17          dragging = true;\n   18          hexagon.selected = true\n\n3 matches across 2 files\n\n\nSearching 9 files for \"inbounds\"\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n  166     * @return {boolean}\n  167     */\n  168:   Hexagon.prototype.isInBounds = function(x, y) {\n  169:     console.log('inbounds')\n  170      return this.Contains(new Point(x, y));\n  171    };\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n   14    Canvas.selectHex = function(e){\n   15      board.forEach(function(hexagon){\n   16:       if(hexagon.isInBounds(e.x,e.y) && dragging == false){\n   17          dragging = true;\n   18          hexagon.selected = true\n\n3 matches across 2 files\n\n\nSearching 9 files for \"isInBounds\"\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n  166     * @return {boolean}\n  167     */\n  168:   Hexagon.prototype.isInBounds = function(x, y) {\n  169      return this.Contains(new Point(x, y));\n  170    };\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n   14    Canvas.selectHex = function(e){\n   15      board.forEach(function(hexagon){\n   16:       if(hexagon.isInBounds(e.x,e.y) && dragging == false){\n   17          dragging = true;\n   18          hexagon.selected = true\n\n2 matches across 2 files\n\n\nSearching 9 files for \"console.log(true)\"\n\n0 matches across 0 files\n",
 			"settings":
 			{
-				"buffer_size": 5283,
+				"buffer_size": 28905,
 				"line_ending": "Unix",
 				"name": "Find Results",
 				"scratch": true
@@ -557,7 +566,7 @@
 			"file": "PieceMovement.js",
 			"settings":
 			{
-				"buffer_size": 2213,
+				"buffer_size": 2403,
 				"line_ending": "Unix"
 			}
 		},
@@ -611,8 +620,8 @@
 	"file_history":
 	[
 		"/Users/JP/code/swarm2/client/swarm2.sublime-project",
-		"/Users/JP/code/swarm2/client/Hexagon.js",
 		"/Users/JP/code/swarm2/.git/COMMIT_EDITMSG",
+		"/Users/JP/code/swarm2/client/Hexagon.js",
 		"/Users/JP/code/swarm2/client/Hive.js",
 		"/Users/JP/code/swarm2/client/Game.js",
 		"/Users/JP/code/swarm2/swarm.html",
@@ -876,6 +885,48 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"      ctx.lineWidth = 1;\n      ctx.strokeStyle = '#003300';",
+			"5",
+			"BottomRightPoint",
+			"context",
+			"PathCoOrdX",
+			"console.log(true)",
+			"pRel",
+			"contains",
+			"Contains",
+			"isInBounds",
+			"inbounds",
+			"isInBounds",
+			"inbounds",
+			"selec",
+			"debugger",
+			"midY",
+			"p.",
+			"isInBounds",
+			"P1",
+			"isInHexBounds",
+			"isInBounds",
+			"isInHexBounds",
+			"isInBounds",
+			"isInHexBounds",
+			"//clear",
+			"clear",
+			"clearRect",
+			"clearRe",
+			"debugger",
+			"dragHex",
+			"deselectHex",
+			"draw",
+			"y1",
+			"x1 + ",
+			"y)",
+			"x,",
+			" x",
+			"x =",
+			"x",
+			"Hexagon",
+			"addpiece",
+			"dbl",
 			"allPieces",
 			"debugger",
 			"neighbor",
@@ -961,49 +1012,7 @@
 			"save_form",
 			"bareboat: true",
 			"@boat.packages.create",
-			"def wizard",
-			"TrackStateChange",
-			"BbBackEndTracker",
-			"js_track",
-			"Balanced::Customer.find",
-			"add_to_customer",
-			"js_track",
-			"started listing",
-			"new",
-			"redirect",
-			"boats",
-			"new",
-			"boat",
-			"Great! We've sent the message",
-			"render_error",
-			"404",
-			"friend",
-			"lifesaver",
-			"Plan with Friends",
-			"minimal-dark",
-			"new!",
-			"user_signed_in? and @boat.pending_survey?",
-			"over",
-			"pending_survey",
-			"owner of this boat",
-			"The owner of this boat",
-			"The owner of this boat needs to send us ba",
-			"book it",
-			"searchable",
-			"charter fleet",
-			"Charter Company",
-			"charter flee",
-			"charter",
-			"charter company?",
-			"charter",
-			"Like our",
-			"Like our policy becomes primary",
-			"sidekiq_prod",
-			"with_friends",
-			"config.server_search_url",
-			"Honeybadger::Rack",
-			"createdb",
-			"assemble_query"
+			"def wizard"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1041,30 +1050,28 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/Users/JP/code/swarm2/swarm.js",
 					"settings":
 					{
-						"buffer_size": 111,
+						"buffer_size": 432,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								100,
-								100
+								432,
+								432
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"auto_name": "1. double click on page to add piece",
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1074,46 +1081,18 @@
 				},
 				{
 					"buffer": 1,
-					"file": "Canvas.js",
+					"file": "/Users/JP/code/swarm2/swarm.js",
 					"settings":
 					{
-						"buffer_size": 1078,
+						"buffer_size": 112,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								964,
-								964
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 406.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "Hexagon.js",
-					"settings":
-					{
-						"buffer_size": 7550,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								7393,
-								7393
+								101,
+								101
 							]
 						],
 						"settings":
@@ -1129,10 +1108,70 @@
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
+					"file": "Canvas.js",
 					"settings":
 					{
-						"buffer_size": 5283,
+						"buffer_size": 1060,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								777,
+								777
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 304.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "Hexagon.js",
+					"settings":
+					{
+						"buffer_size": 8460,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3673,
+								3673
+							],
+							[
+								3863,
+								3863
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 702.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"settings":
+					{
+						"buffer_size": 28905,
 						"regions":
 						{
 							"match":
@@ -1275,6 +1314,718 @@
 									[
 										5148,
 										5161
+									],
+									[
+										5431,
+										5434
+									],
+									[
+										5752,
+										5760
+									],
+									[
+										5855,
+										5863
+									],
+									[
+										6121,
+										6128
+									],
+									[
+										6284,
+										6291
+									],
+									[
+										6475,
+										6482
+									],
+									[
+										6505,
+										6512
+									],
+									[
+										6554,
+										6561
+									],
+									[
+										6577,
+										6584
+									],
+									[
+										6620,
+										6627
+									],
+									[
+										6746,
+										6753
+									],
+									[
+										6816,
+										6823
+									],
+									[
+										6897,
+										6904
+									],
+									[
+										6922,
+										6929
+									],
+									[
+										6999,
+										7006
+									],
+									[
+										7153,
+										7160
+									],
+									[
+										7199,
+										7206
+									],
+									[
+										7223,
+										7230
+									],
+									[
+										7340,
+										7347
+									],
+									[
+										7416,
+										7423
+									],
+									[
+										7447,
+										7454
+									],
+									[
+										7522,
+										7529
+									],
+									[
+										7599,
+										7606
+									],
+									[
+										7818,
+										7825
+									],
+									[
+										7849,
+										7856
+									],
+									[
+										7920,
+										7927
+									],
+									[
+										7957,
+										7964
+									],
+									[
+										8092,
+										8099
+									],
+									[
+										8133,
+										8140
+									],
+									[
+										8164,
+										8171
+									],
+									[
+										8315,
+										8322
+									],
+									[
+										8570,
+										8577
+									],
+									[
+										8846,
+										8853
+									],
+									[
+										8873,
+										8880
+									],
+									[
+										8934,
+										8941
+									],
+									[
+										9124,
+										9131
+									],
+									[
+										9175,
+										9182
+									],
+									[
+										9280,
+										9287
+									],
+									[
+										9657,
+										9664
+									],
+									[
+										9759,
+										9766
+									],
+									[
+										9864,
+										9871
+									],
+									[
+										10155,
+										10162
+									],
+									[
+										10279,
+										10286
+									],
+									[
+										10518,
+										10525
+									],
+									[
+										10615,
+										10622
+									],
+									[
+										10737,
+										10744
+									],
+									[
+										10806,
+										10813
+									],
+									[
+										10951,
+										10958
+									],
+									[
+										11016,
+										11023
+									],
+									[
+										11187,
+										11194
+									],
+									[
+										11246,
+										11253
+									],
+									[
+										11305,
+										11312
+									],
+									[
+										11362,
+										11369
+									],
+									[
+										11421,
+										11428
+									],
+									[
+										11480,
+										11487
+									],
+									[
+										11545,
+										11552
+									],
+									[
+										11611,
+										11618
+									],
+									[
+										11709,
+										11716
+									],
+									[
+										11775,
+										11782
+									],
+									[
+										11926,
+										11933
+									],
+									[
+										12054,
+										12061
+									],
+									[
+										12223,
+										12230
+									],
+									[
+										12254,
+										12261
+									],
+									[
+										12398,
+										12405
+									],
+									[
+										12424,
+										12431
+									],
+									[
+										12522,
+										12529
+									],
+									[
+										12573,
+										12580
+									],
+									[
+										12606,
+										12613
+									],
+									[
+										12670,
+										12677
+									],
+									[
+										12728,
+										12735
+									],
+									[
+										12863,
+										12870
+									],
+									[
+										13093,
+										13100
+									],
+									[
+										13316,
+										13323
+									],
+									[
+										13479,
+										13486
+									],
+									[
+										13670,
+										13677
+									],
+									[
+										13700,
+										13707
+									],
+									[
+										13749,
+										13756
+									],
+									[
+										13772,
+										13779
+									],
+									[
+										13815,
+										13822
+									],
+									[
+										13941,
+										13948
+									],
+									[
+										14011,
+										14018
+									],
+									[
+										14092,
+										14099
+									],
+									[
+										14117,
+										14124
+									],
+									[
+										14194,
+										14201
+									],
+									[
+										14348,
+										14355
+									],
+									[
+										14394,
+										14401
+									],
+									[
+										14418,
+										14425
+									],
+									[
+										14535,
+										14542
+									],
+									[
+										14611,
+										14618
+									],
+									[
+										14642,
+										14649
+									],
+									[
+										14717,
+										14724
+									],
+									[
+										14794,
+										14801
+									],
+									[
+										15013,
+										15020
+									],
+									[
+										15044,
+										15051
+									],
+									[
+										15115,
+										15122
+									],
+									[
+										15152,
+										15159
+									],
+									[
+										15287,
+										15294
+									],
+									[
+										15328,
+										15335
+									],
+									[
+										15359,
+										15366
+									],
+									[
+										15510,
+										15517
+									],
+									[
+										15765,
+										15772
+									],
+									[
+										16041,
+										16048
+									],
+									[
+										16068,
+										16075
+									],
+									[
+										16129,
+										16136
+									],
+									[
+										16319,
+										16326
+									],
+									[
+										16370,
+										16377
+									],
+									[
+										16475,
+										16482
+									],
+									[
+										16852,
+										16859
+									],
+									[
+										16954,
+										16961
+									],
+									[
+										17059,
+										17066
+									],
+									[
+										17350,
+										17357
+									],
+									[
+										17474,
+										17481
+									],
+									[
+										17713,
+										17720
+									],
+									[
+										17810,
+										17817
+									],
+									[
+										17932,
+										17939
+									],
+									[
+										18001,
+										18008
+									],
+									[
+										18146,
+										18153
+									],
+									[
+										18211,
+										18218
+									],
+									[
+										18382,
+										18389
+									],
+									[
+										18441,
+										18448
+									],
+									[
+										18500,
+										18507
+									],
+									[
+										18557,
+										18564
+									],
+									[
+										18616,
+										18623
+									],
+									[
+										18675,
+										18682
+									],
+									[
+										18740,
+										18747
+									],
+									[
+										18806,
+										18813
+									],
+									[
+										18904,
+										18911
+									],
+									[
+										18970,
+										18977
+									],
+									[
+										19121,
+										19128
+									],
+									[
+										19249,
+										19256
+									],
+									[
+										19418,
+										19425
+									],
+									[
+										19449,
+										19456
+									],
+									[
+										19593,
+										19600
+									],
+									[
+										19619,
+										19626
+									],
+									[
+										19717,
+										19724
+									],
+									[
+										19768,
+										19775
+									],
+									[
+										19801,
+										19808
+									],
+									[
+										19865,
+										19872
+									],
+									[
+										19923,
+										19930
+									],
+									[
+										20058,
+										20065
+									],
+									[
+										20288,
+										20295
+									],
+									[
+										20604,
+										20607
+									],
+									[
+										20772,
+										20775
+									],
+									[
+										20891,
+										20894
+									],
+									[
+										21021,
+										21024
+									],
+									[
+										21137,
+										21140
+									],
+									[
+										21384,
+										21387
+									],
+									[
+										21554,
+										21557
+									],
+									[
+										21730,
+										21733
+									],
+									[
+										21950,
+										21957
+									],
+									[
+										22209,
+										22217
+									],
+									[
+										22342,
+										22350
+									],
+									[
+										22610,
+										22617
+									],
+									[
+										22866,
+										22875
+									],
+									[
+										23189,
+										23199
+									],
+									[
+										23462,
+										23472
+									],
+									[
+										23751,
+										23761
+									],
+									[
+										24024,
+										24034
+									],
+									[
+										24316,
+										24329
+									],
+									[
+										24708,
+										24721
+									],
+									[
+										24947,
+										24960
+									],
+									[
+										25249,
+										25259
+									],
+									[
+										25522,
+										25532
+									],
+									[
+										25823,
+										25831
+									],
+									[
+										25964,
+										25972
+									],
+									[
+										26172,
+										26180
+									],
+									[
+										26224,
+										26232
+									],
+									[
+										26456,
+										26464
+									],
+									[
+										26743,
+										26753
+									],
+									[
+										27015,
+										27025
+									],
+									[
+										27304,
+										27312
+									],
+									[
+										27356,
+										27364
+									],
+									[
+										27588,
+										27596
+									],
+									[
+										27875,
+										27883
+									],
+									[
+										27927,
+										27935
+									],
+									[
+										28159,
+										28167
+									],
+									[
+										28446,
+										28456
+									],
+									[
+										28695,
+										28705
 									]
 								],
 								"scope": ""
@@ -1283,14 +2034,14 @@
 						"selection":
 						[
 							[
-								4895,
-								4895
+								28837,
+								28837
 							]
 						],
 						"settings":
 						{
 							"detect_indentation": false,
-							"output_tag": 7,
+							"output_tag": 29,
 							"result_base_dir": "",
 							"result_file_regex": "^([A-Za-z\\\\/<].*):$",
 							"result_line_regex": "^ +([0-9]+):",
@@ -1299,39 +2050,41 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3652.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "PieceMovement.js",
-					"settings":
-					{
-						"buffer_size": 2213,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								757,
-								757
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 160.0,
+						"translation.y": 19888.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 5,
+					"file": "PieceMovement.js",
+					"settings":
+					{
+						"buffer_size": 2403,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								357,
+								357
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 508.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
 					"file": "Piece.js",
 					"settings":
 					{

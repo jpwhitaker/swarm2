@@ -1,0 +1,12 @@
+
+{
+   "folders":
+   [
+      {
+         "path": "/Users/JP/code/podcast",
+         "folder_exclude_patterns": [".svn"],
+         "folder_exclude_patterns": [".meteor"],
+         "file_exclude_patterns": [".*", "*.sublime-workspace", "*.sublime-project"]
+      }
+   ]
+}

@@ -27,8 +27,12 @@ Meteor.startup(function(){
 
   }
 
+  //TODO: drawPieces should take in a collection of pieces and draw them.
+  // gatherBoard / gatherNeighbors etc should handle passing the pieces
+
 
   Canvas.drawAllPieces = function(){
+    Canvas.clear()
     Canvas.drawBoardPieces()
     Canvas.drawGhost()
   }
@@ -41,8 +45,12 @@ Meteor.startup(function(){
 
   Canvas.drawGhost = function(){
     for(piece in board){
-      for(ghost in board[piece].neighbors){
-        board[piece].neighbors[ghost].draw(ctx)
+      //dont show selected's neighbors
+      //ghosts are to show available moves
+      if (board[piece].selected == false){
+        for(ghost in board[piece].neighbors){
+          board[piece].neighbors[ghost].draw(ctx)
+        }
       }
     }
   }

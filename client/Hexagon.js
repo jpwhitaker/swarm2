@@ -41,6 +41,9 @@ Meteor.startup(function(){
     this.Points = [];//Polygon Base
     this.type = type
     this.neighbors = neighbors
+    this.selected = false;
+    this.dragging = false;
+
     var x1 = null;
     var y1 = null;
     if(Hexagon.Static.ORIENTATION == Hexagon.Orientation.Normal) {
@@ -54,11 +57,10 @@ Meteor.startup(function(){
       this.Points.push(new Point(x, y1 + y));
     }
     else {
-      // debugger
 
-      //midX and midY shift everything to the midpoint of where the cursor clicked
-      midX = x + (Hexagon.Static.WIDTH / 2)
-      midY = y + (Hexagon.Static.HEIGHT / 2)
+      // //midX and midY shift everything to the midpoint of where the cursor clicked
+      // midX = x + (Hexagon.Static.WIDTH / 2)
+      // midY = y + (Hexagon.Static.HEIGHT / 2)
 
 
       x1 = (Hexagon.Static.WIDTH / 2);
@@ -78,13 +80,11 @@ Meteor.startup(function(){
     this.x1 = x1;
     this.y1 = y1;
 
-    this.TopLeftPoint = new Point(this.x, this.y);
-    this.BottomRightPoint = new Point(this.x + Hexagon.Static.WIDTH, this.y + Hexagon.Static.HEIGHT);
+    this.TopLeftPoint = new Point(this.x -x1, this.y -y1 -y1);
+    this.BottomRightPoint = new Point(this.x + Hexagon.Static.WIDTH -x1, this.y -y1 + Hexagon.Static.HEIGHT -y1);
     this.MidPoint = new Point(this.x, this.y);
 
     this.P1 = new Point(x + x1, y + y1);
-
-    this.selected = false;
   };
 
   /**
@@ -120,7 +120,9 @@ Meteor.startup(function(){
       ctx.textBaseline = 'middle';
       //var textWidth = ctx.measureText(this.Planet.BoundingHex.Id);
       ctx.fillText(this.Id, this.MidPoint.X, this.MidPoint.Y);
+
     }
+
 
     if(this.PathCoOrdX !== null && this.PathCoOrdY !== null && typeof(this.PathCoOrdX) != "undefined" && typeof(this.PathCoOrdY) != "undefined")
     {
@@ -178,8 +180,7 @@ Meteor.startup(function(){
    * @return {boolean}
    */
   Hexagon.prototype.isInHexBounds = function(/*Point*/ p) {
-    if(this.TopLeftPoint.X < p.X && this.TopLeftPoint.Y < p.Y &&
-       p.X < this.BottomRightPoint.X && p.Y < this.BottomRightPoint.Y)
+    if(this.TopLeftPoint.X < p.X && this.TopLeftPoint.Y < p.Y && p.X < this.BottomRightPoint.X && p.Y < this.BottomRightPoint.Y)
       return true;
     return false;
   };
@@ -205,6 +206,7 @@ Meteor.startup(function(){
       {
         var iP = this.Points[i];
         var jP = this.Points[j];
+        
         if (
           (
            ((iP.Y <= p.Y) && (p.Y < jP.Y)) ||
@@ -216,6 +218,8 @@ Meteor.startup(function(){
         {
           isIn = !isIn;
         }
+        else
+          {}
       }
     }
     return isIn;

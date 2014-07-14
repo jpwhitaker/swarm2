@@ -1,6 +1,10 @@
 Meteor.startup(function(){
   // Hexagon.prototype.type = this.type = type || ""
 
+  Hexagon.select = function(){
+    
+  }
+
   Hexagon.generateNeighbors = function(x,y) {
     var neighbors = []
     var xPositions = [];
@@ -20,8 +24,8 @@ Meteor.startup(function(){
     yPositions.push( y )
 
 
-
-    for (i=0; i<8; i++){
+    //TODO change to 8, temporarily 6 because 7/8 had no xy values
+    for (i=0; i<6; i++){
       neighbors.push(new Hexagon(i.toString(),xPositions[i],yPositions[i],'ghost'))
     }
     return neighbors
