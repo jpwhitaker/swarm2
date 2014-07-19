@@ -39,8 +39,8 @@ Meteor.startup(function(){
   Hexagon = function(id, x, y, type) {
     // debugger
     this.Points = [];//Polygon Base
-    this.type = type
-    
+    this.type = type;
+    this.name = 'henry';
     this.neighbors = [];
     this.generateNeighbors(x,y);
     this.selected = false;

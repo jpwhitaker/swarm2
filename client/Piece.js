@@ -28,6 +28,7 @@ Meteor.startup(function(){
       //TODO change to 8, temporarily 6 because 7/8 had no xy values
       for (i=0; i<6; i++){
         ghost = (new Hexagon("Ghost "+i.toString(),xPositions[i],yPositions[i],'ghost'));
+        debugger
         this.connectToNeighbor(ghost,i)
       }
     }

@@ -117,9 +117,9 @@ if (Meteor.isClient) {
 
       // I don't know if this works!
       Hexagon.prototype.copyNeighbors = function(neighbor, side) {
-        // debugger
+        debugger
         // Don't connect to nothing
-        if (!neighbor || !side)
+        if (!neighbor && side != null)
           return;
 
         // Don't connect to ourself, don't connect if already connected
