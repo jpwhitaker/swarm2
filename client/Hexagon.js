@@ -41,8 +41,10 @@ Meteor.startup(function(){
     this.Points = [];//Polygon Base
     this.type = type;
     this.name = 'henry';
-    this.neighbors = [];
-    this.generateNeighbors(x,y);
+    //create initial neighbor array
+    if (this.type == 'piece'){
+      this.neighbors = Hexagon.generateNeighbors(x,y)
+    };
     this.selected = false;
     this.dragging = false;
 
@@ -175,7 +177,6 @@ Meteor.startup(function(){
   Hexagon.prototype.isInBounds = function(x, y) {
     return this.Contains(new Point(x, y));
   };
-    
 
   /**
    * Returns true if the point is inside this hexagon, it is a quick contains
@@ -210,7 +211,7 @@ Meteor.startup(function(){
       {
         var iP = this.Points[i];
         var jP = this.Points[j];
-        
+
         if (
           (
            ((iP.Y <= p.Y) && (p.Y < jP.Y)) ||

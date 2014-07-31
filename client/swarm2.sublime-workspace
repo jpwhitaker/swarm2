@@ -520,27 +520,10 @@
 	"buffers":
 	[
 		{
-			"contents": "1. double click on page to add piece\n  a. piece is added to board (piece array)\n    - x,y of event should be midpoint of piece\n\n  b. board is rendered\n\n2. click and drag a piece to move it\n  a. mousedown in piece turns dragging to 'true'\n    when dragging is true and there is more than one piece, draw ghosts\n  b. mouseup turns dragging to false\n\n3. dragging a piece in to a ghost piece adds it to the ghost parent's neighbor array",
-			"settings":
-			{
-				"buffer_size": 432,
-				"line_ending": "Unix",
-				"name": "1. double click on page to add piece"
-			}
-		},
-		{
-			"file": "/Users/JP/code/swarm2/swarm.js",
-			"settings":
-			{
-				"buffer_size": 4940,
-				"line_ending": "Unix"
-			}
-		},
-		{
 			"file": "Canvas.js",
 			"settings":
 			{
-				"buffer_size": 1365,
+				"buffer_size": 688,
 				"line_ending": "Unix"
 			}
 		},
@@ -548,15 +531,7 @@
 			"file": "Hexagon.js",
 			"settings":
 			{
-				"buffer_size": 7823,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "PieceMovement.js",
-			"settings":
-			{
-				"buffer_size": 2438,
+				"buffer_size": 7901,
 				"line_ending": "Unix"
 			}
 		},
@@ -564,26 +539,18 @@
 			"file": "Piece.js",
 			"settings":
 			{
-				"buffer_size": 1168,
+				"buffer_size": 953,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"contents": "Searching 10 files for \"generateNeighbors\" (case sensitive)\n\n/Users/JP/code/swarm2/client/Piece.js:\n    6    }\n    7  \n    8:   Hexagon.prototype.generateNeighbors = function(x,y) {\n    9      var neighbors = []\n   10      var xPositions = [];\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n   30    Canvas.addPieceToBoard = function (e){\n   31      newPiece = (new Hexagon ((board.length + 1) , e.x, e.y, 'piece'))\n   32:     newPiece.neighbors = newPiece.generateNeighbors(e.x, e.y)\n   33      board.push(newPiece)\n   34    }\n\n2 matches across 2 files\n\n\nSearching 10 files for \"debugger\" (case sensitive)\n\n/Users/JP/code/swarm2/swarm.js:\n  118        // I don't know if this works!\n  119        Hexagon.prototype.copyNeighbors = function(neighbor, side) {\n  120:         debugger\n  121          // Don't connect to nothing\n  122          if (!neighbor || !side)\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n   38     */\n   39    Hexagon = function(id, x, y, type) {\n   40:     // debugger\n   41      this.Points = [];//Polygon Base\n   42      this.type = type\n   43      this.neighbors = [];\n   44:     debugger\n   45      this.generateNeighbors();\n   46      this.selected = false;\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n   84  \n   85    Hexagon.prototype.updateGhosts = function(e){\n   86:     // debugger\n   87      if (this.type == 'piece' ){\n   88        this.neighbors.forEach(function(ghost){\n\n4 matches across 3 files\n\n\nSearching 10 files for \"Hexagon\" (case sensitive)\n\n/Users/JP/code/swarm2/swarm.js:\n   77  \n   78  \n   79:       Hexagon.prototype.type = 'Piece';\n   80  \n   81:       Hexagon.prototype.toString = function() { return this.name+' ('+this.type+')'; };\n   82  \n   83:       Hexagon.prototype.resetNeighbors = function(side) {\n   84          this.neighbors[0] = null; // 0 (NW)\n   85          this.neighbors[1] = null; // 1 (NE)\n   ..\n   92        };\n   93  \n   94:       Hexagon.prototype.connectToNeighbor = function(neighbor, side) {\n   95          // Reset our neighbors\n   96          // this.resetNeighbors();\n   ..\n  117  \n  118        // I don't know if this works!\n  119:       Hexagon.prototype.copyNeighbors = function(neighbor, side) {\n  120          // debugger\n  121          // Don't connect to nothing\n  ...\n  165        Swarm.Ant = function() {\n  166          // Call parent constructor\n  167:         Hexagon.apply(this, arguments);\n  168        };\n  169  \n  170        // Inherit from Piece\n  171:       Swarm.Ant.prototype = Object.create(Hexagon.prototype);\n  172  \n  173        Swarm.Ant.prototype.type = 'Ant';\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n   34  \n   35    /**\n   36:    * A Hexagon is a 6 sided polygon, our hexes don't have to be symmetrical, i.e. ratio of width to height could be 4 to 3\n   37     * @constructor\n   38     */\n   39:   Hexagon = function(id, x, y, type) {\n   40      // debugger\n   41      this.Points = [];//Polygon Base\n   ..\n   49      var x1 = null;\n   50      var y1 = null;\n   51:     if(Hexagon.Static.ORIENTATION == Hexagon.Orientation.Normal) {\n   52:       // x1 = (Hexagon.Static.WIDTH - Hexagon.Static.SIDE)/2;\n   53:       // y1 = (Hexagon.Static.HEIGHT / 2);\n   54        this.Points.push(new Point(x1 + x, y));\n   55:       this.Points.push(new Point(x1 + Hexagon.Static.SIDE + x, y));\n   56:       this.Points.push(new Point(Hexagon.Static.WIDTH + x, y1 + y));\n   57:       this.Points.push(new Point(x1 + Hexagon.Static.SIDE + x, Hexagon.Static.HEIGHT + y));\n   58:       this.Points.push(new Point(x1 + x, Hexagon.Static.HEIGHT + y));\n   59        this.Points.push(new Point(x, y1 + y));\n   60      }\n   ..\n   62  \n   63        // //midX and midY shift everything to the midpoint of where the cursor clicked\n   64:       // midX = x + (Hexagon.Static.WIDTH / 2)\n   65:       // midY = y + (Hexagon.Static.HEIGHT / 2)\n   66  \n   67  \n   68:       x1 = (Hexagon.Static.WIDTH / 2);\n   69:       y1 = (Hexagon.Static.HEIGHT - Hexagon.Static.SIDE)/2;\n   70        this.Points.push(new Point(x, y - (y1*2)));\n   71:       this.Points.push(new Point(Hexagon.Static.WIDTH + x - x1,  y - y1));\n   72:       this.Points.push(new Point(Hexagon.Static.WIDTH + x-x1,  Hexagon.Static.SIDE + y -y1));\n   73:       this.Points.push(new Point(x, Hexagon.Static.HEIGHT + y - (y1*2)));\n   74:       this.Points.push(new Point(x-x1,  Hexagon.Static.SIDE + y -y1));\n   75        this.Points.push(new Point(x-x1, y -y1));\n   76      }\n   ..\n   84  \n   85      this.TopLeftPoint = new Point(this.x -x1, this.y -y1 -y1);\n   86:     this.BottomRightPoint = new Point(this.x + Hexagon.Static.WIDTH -x1, this.y -y1 + Hexagon.Static.HEIGHT -y1);\n   87      this.MidPoint = new Point(this.x, this.y);\n   88  \n   ..\n   91  \n   92    /**\n   93:    * draws this Hexagon to the canvas\n   94:    * @this {Hexagon}\n   95     */\n   96:   Hexagon.prototype.draw = function(ctx) {\n   97      if(!this.selected)\n   98        ctx.strokeStyle = \"grey\";\n   ..\n  138      }\n  139  \n  140:     if(Hexagon.Static.DRAWSTATS)\n  141      {\n  142        ctx.strokeStyle = \"black\";\n  ...\n  158        ctx.fillText(\"x\", this.x + this.x1/2, this.P1.Y + 10);\n  159        ctx.fillText(\"y\", this.P1.X + 2, this.y + this.y1/2);\n  160:       ctx.fillText(\"z = \" + Hexagon.Static.SIDE, this.P1.X, this.P1.Y + this.y1 + 10);\n  161        ctx.fillText(\"(\" + this.x1.toFixed(2) + \",\" + this.y1.toFixed(2) + \")\", this.P1.X, this.P1.Y + 10);\n  162      }\n  ...\n  168    /**\n  169     * Returns true if the x,y coordinates are inside this hexagon\n  170:    * @this {Hexagon}\n  171     * @return {boolean}\n  172     */\n  173:   Hexagon.prototype.isInBounds = function(x, y) {\n  174      return this.Contains(new Point(x, y));\n  175    };\n  ...\n  178    /**\n  179     * Returns true if the point is inside this hexagon, it is a quick contains\n  180:    * @this {Hexagon}\n  181     * @param {Point} p the test point\n  182     * @return {boolean}\n  183     */\n  184:   Hexagon.prototype.isInHexBounds = function(/*Point*/ p) {\n  185      if(this.TopLeftPoint.X < p.X && this.TopLeftPoint.Y < p.Y && p.X < this.BottomRightPoint.X && p.Y < this.BottomRightPoint.Y)\n  186        return true;\n  ...\n  194    /**\n  195     * Returns true if the point is inside this hexagon, it first uses the quick isInHexBounds contains, then check the boundaries\n  196:    * @this {Hexagon}\n  197     * @param {Point} p the test point\n  198     * @return {boolean}\n  199     */\n  200:   Hexagon.prototype.Contains = function(/*Point*/ p) {\n  201      var isIn = false;\n  202      if (this.isInHexBounds(p))\n  ...\n  231    * Returns absolute distance in pixels from the mid point of this hex to the given point\n  232    * Provided by: Ian (Disqus user: boingy)\n  233:   * @this {Hexagon}\n  234    * @param {Point} p the test point\n  235    * @return {number} the distance in pixels\n  236    */\n  237:   Hexagon.prototype.distanceFromMidPoint = function(/*Point*/ p) {\n  238      // Pythagoras' Theorem: Square of hypotenuse = sum of squares of other two sides\n  239      var deltaX = this.MidPoint.X - p.X;\n  ...\n  244    };\n  245  \n  246:   Hexagon.Orientation = {\n  247      Normal: 0,\n  248      Rotated: 1\n  249    };\n  250  \n  251:   Hexagon.Static = {HEIGHT:90\n  252              , WIDTH:90\n  253              , SIDE:50.0\n  254:             , ORIENTATION:Hexagon.Orientation.Rotated\n  255              , DRAWSTATS: false};//hexagons will have 25 unit sides for now\n  256  \n\n/Users/JP/code/swarm2/client/Piece.js:\n    1  Meteor.startup(function(){\n    2:   // Hexagon.prototype.type = this.type = type || \"\"\n    3  \n    4:   Hexagon.select = function(){\n    5  \n    6    }\n    7  \n    8:   Hexagon.prototype.generateNeighbors = function(x,y) {\n    9      if (this.type == \"piece\"){\n   10        var neighbors = []\n   11        var xPositions = [];\n   12        var yPositions = [];\n   13:       xPositions.push( x - (Hexagon.Static.WIDTH/2) )\n   14:       xPositions.push( x + (Hexagon.Static.WIDTH/2) )\n   15:       xPositions.push( x + (Hexagon.Static.WIDTH) )\n   16:       xPositions.push( x + (Hexagon.Static.WIDTH/2) )\n   17:       xPositions.push( x - (Hexagon.Static.WIDTH/2) )\n   18:       xPositions.push( x - (Hexagon.Static.WIDTH) )\n   19  \n   20:       yPositions.push( y - (Hexagon.Static.HEIGHT * (3/4)) )\n   21:       yPositions.push( y - (Hexagon.Static.HEIGHT * (3/4)) )\n   22        yPositions.push( y )\n   23:       yPositions.push( y + (Hexagon.Static.HEIGHT * (3/4)) )\n   24:       yPositions.push( y + (Hexagon.Static.HEIGHT * (3/4)) )\n   25        yPositions.push( y )\n   26  \n   ..\n   28        //TODO change to 8, temporarily 6 because 7/8 had no xy values\n   29        for (i=0; i<6; i++){\n   30:         ghost = (new Hexagon(\"Ghost \"+i.toString(),xPositions[i],yPositions[i],'ghost'));\n   31          this.connectToNeighbor(ghost,i)\n   32        }\n\n/Users/JP/code/swarm2/client/PieceMovement.js:\n   29  \n   30    Canvas.addPieceToBoard = function (e){\n   31:     newPiece = (new Hexagon ((board.length + 1) , e.x, e.y, 'piece'))\n   32      newPiece.neighbors = newPiece.generateNeighbors(e.x, e.y)\n   33      board.push(newPiece)\n   ..\n   59    }\n   60  \n   61:   Hexagon.prototype.updatePositions = function(x,y){\n   62:     this.updateHexagonPoints(x,y);\n   63      this.updateGhosts(x,y);\n   64    }\n   65  \n   66:   Hexagon.prototype.updateHexagonPoints = function(x,y){\n   67      //Update all 6 Points\n   68      this.Points.forEach(function(point){\n   ..\n   83    }\n   84  \n   85:   Hexagon.prototype.updateGhosts = function(e){\n   86      // debugger\n   87      if (this.type == 'piece' ){\n   ..\n   90            //do nothing\n   91          } else {\n   92:           ghost.updateHexagonPoints(e)\n   93          }\n   94        })\n\n68 matches across 4 files\n",
+			"contents": "Searching 8 files for \"generate\" (case sensitive)\n\n0 matches across 0 files\n\n\nSearching 8 files for \"generateNeighbors\" (case sensitive)\n\n0 matches across 0 files\n\n\nSearching 8 files for \"ghost\" (case sensitive)\n\n/Users/JP/code/swarm2/client/Hexagon.js:\n  101        ctx.strokeStyle = \"black\";\n  102  \n  103:     if(this.type == 'ghost'){\n  104        ctx.setLineDash([5])\n  105      };\n\n1 match in 1 file\n",
 			"settings":
 			{
-				"buffer_size": 9714,
+				"buffer_size": 406,
 				"line_ending": "Unix",
 				"name": "Find Results",
 				"scratch": true
-			}
-		},
-		{
-			"contents": "var Hive = {};\n\n(function() {\n  // \"Constants\"\n  var N = 0;\n  var NE = 1;\n  var SE = 2;\n  var S = 3;\n  var SW = 4;\n  var NW = 5;\n  var ABOVE = 6;\n  var BELOW = 7;\n\n  Hive.sides = {\n    N: N,\n    NE: NE,\n    SE: SE,\n    S: S,\n    SW: SW,\n    NW: NW,\n    ABOVE: ABOVE,\n    BELOW: BELOW\n  };\n\n  Hive.sideNames = [\n    'N',\n    'NE',\n    'SE',\n    'S',\n    'SW',\n    'NW',\n    'ABOVE',\n    'BELOW'\n  ];\n\n  /*\n    0 <-> 3\n    1 <-> 4\n    2 <-> 5\n  */\n  var compliment = function(side) {\n    // Piece on top of another piece\n    if (side == ABOVE)\n      return BELOW;\n\n    // Piece under another piece\n    if (side == BELOW)\n      return ABOVE;\n\n    // Wrap around if side causes us to go over 5\n    if (side >= 3)\n      return side - 3;\n\n    // Move around by 3\n    return side + 3;\n  };\n\n\n  /*\n                 0 (N)\n             ___________\n            /           \\\n    5 (NW) /             \\ 1 (NE)\n          /    6 (above)  \\\n          \\    7 (below)  /\n    4 (SW) \\             / 2 (SE)\n            \\___________/\n\n                 3 (S)\n  */\n  Hive.Piece = function(options) {\n    this.neighbors = [];\n    this.resetNeighbors();\n\n    // Copy supplied neighbors\n    if (options.neighbors)\n      this.neighbors = options.neighbors.slice(0);\n\n    if (options.name)\n      this.name = options.name;\n  };\n\n  Hive.Piece.prototype.type = 'Piece';\n\n  Hive.Piece.prototype.toString = function() { return this.name+' ('+this.type+')'; };\n\n  Hive.Piece.prototype.resetNeighbors = function(side) {\n    this.neighbors[0] = null; // 0 (N)\n    this.neighbors[1] = null; // 1 (NE)\n    this.neighbors[2] = null; // 2 (SE)\n    this.neighbors[3] = null; // 3 (S)\n    this.neighbors[4] = null; // 4 (SW)\n    this.neighbors[5] = null; // 5 (NW)\n    this.neighbors[6] = null; // 6 (Above)\n    this.neighbors[7] = null; // 7 (Below)\n  };\n\n  Hive.Piece.prototype.connectToNeighbor = function(neighbor, side) {\n    // Reset our neighbors\n    this.resetNeighbors();\n\n    // Special cases\n    if (side === BELOW) {\n      // Add the neighbor on ourself\n      this.neighbors[side] = neighbor;\n\n      // Add ourself on the neighbor\n      neighbor.neighbors[compliment(side)] = this;\n      return;\n\n    }\n\n    if (side === ABOVE) {\n      // Can only move on top\n      throw new Error(\"A piece can't move under another piece!\");\n    }\n\n    // Find neighbors given our location\n    this.copyNeighbors(neighbor, side);\n  };\n\n  // I don't know if this works!\n  Hive.Piece.prototype.copyNeighbors = function(neighbor, side) {\n    // Don't connect to nothing\n    if (!neighbor)\n      return;\n\n    // Don't connect to ourself, don't connect if already connected\n    if (neighbor === this || this.neighbors[side] === neighbor)\n      return;\n\n    // Add the neighbor on ourself\n    this.neighbors[side] = neighbor;\n\n    // Add ourself on the neighbor\n    neighbor.neighbors[compliment(side)] = this;\n\n    if (side === N) {\n      this.copyNeighbors(neighbor.neighbors[SW], NW);\n      this.copyNeighbors(neighbor.neighbors[SE], NE);\n    }\n    else if (side === S) {\n      this.copyNeighbors(neighbor.neighbors[NW], SW);\n      this.copyNeighbors(neighbor.neighbors[NE], SE);\n    }\n    else if (side === NE) {\n      this.copyNeighbors(neighbor.neighbors[NW], N);\n      this.copyNeighbors(neighbor.neighbors[S], SE);\n    }\n    else if (side === SE) {\n      this.copyNeighbors(neighbor.neighbors[SW], S);\n      this.copyNeighbors(neighbor.neighbors[N], NE);\n    }\n    else if (side === NW) {\n      this.copyNeighbors(neighbor.neighbors[NE], N);\n      this.copyNeighbors(neighbor.neighbors[S], SW);\n    }\n    else if (side === SW) {\n      this.copyNeighbors(neighbor.neighbors[NW], N);\n      this.copyNeighbors(neighbor.neighbors[SW], S);\n    }\n  };\n\n  /*\n    Ant\n    Can move around other pieces\n  */\n  Hive.Ant = function() {\n    // Call parent constructor\n    Hive.Piece.apply(this, arguments);\n  };\n\n  // Inherit from Piece\n  Hive.Ant.prototype = Object.create(Hive.Piece.prototype);\n\n  Hive.Ant.prototype.type = 'Ant';\n\n  Hive.Ant.prototype.canMove = function(direction) {\n    // An ant can't move onto another piece\n    if (this.neighbors[direction])\n      return false;\n\n    // Get the left and right directions\n    var left = direction === 0 ? 5 : direction - 1;\n    var right = direction === 5 ? 0 : direction + 1;\n\n    // If the left and right are both occupied, we can't move\n    if (this.neighbors[left] && this.neighbors.right)\n      return false;\n\n    // Otherwise, we're clear\n    return true;\n  };\n\n}());\n\n",
-			"settings":
-			{
-				"buffer_size": 4475,
-				"line_ending": "Unix"
 			}
 		},
 		{
@@ -643,6 +610,8 @@
 	},
 	"file_history":
 	[
+		"/Users/JP/code/swarm2/client/PieceMovement.js",
+		"/Users/JP/code/swarm2/swarm.js",
 		"/Users/JP/code/swarm2/.git/COMMIT_EDITMSG",
 		"/Users/JP/code/swarm2/client/swarm2.sublime-project",
 		"/Users/JP/code/swarm2/client/Hexagon.js",
@@ -653,8 +622,6 @@
 		"/Users/JP/code/swarm2/client/PieceSnapping.js",
 		"/Users/JP/code/swarm2/client/Canvas.js",
 		"/Users/JP/code/swarm2/client/a_init.js",
-		"/Users/JP/code/swarm2/client/PieceMovement.js",
-		"/Users/JP/code/swarm2/swarm.js",
 		"/Users/JP/code/galactica/.git/COMMIT_EDITMSG",
 		"/Users/JP/code/galactica/app/services/manage_fleet.rb",
 		"/Users/JP/code/galactica/app/views/shared/_analytics.html.haml",
@@ -909,6 +876,9 @@
 		"case_sensitive": true,
 		"find_history":
 		[
+			"ghost",
+			"generateNeighbors",
+			"generate",
 			"resetNeighbors",
 			"generateNeighbors",
 			"Hexagon",
@@ -1033,10 +1003,7 @@
 			"ctx",
 			"debugger",
 			"ctx",
-			"give",
-			"addPieces",
-			"addPiece",
-			"add"
+			"give"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1079,48 +1046,18 @@
 			[
 				{
 					"buffer": 0,
+					"file": "Canvas.js",
 					"settings":
 					{
-						"buffer_size": 432,
+						"buffer_size": 688,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								432,
-								432
-							]
-						],
-						"settings":
-						{
-							"auto_name": "1. double click on page to add piece",
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/Users/JP/code/swarm2/swarm.js",
-					"settings":
-					{
-						"buffer_size": 4940,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1523,
-								1537
-							],
-							[
-								2041,
-								2055
+								684,
+								684
 							]
 						],
 						"settings":
@@ -1130,25 +1067,53 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1082.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "Canvas.js",
+					"buffer": 1,
+					"file": "Hexagon.js",
 					"settings":
 					{
-						"buffer_size": 1365,
+						"buffer_size": 7901,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								13,
-								13
+								934,
+								934
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "Piece.js",
+					"settings":
+					{
+						"buffer_size": 953,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								841,
+								850
 							]
 						],
 						"settings":
@@ -1165,93 +1130,9 @@
 				},
 				{
 					"buffer": 3,
-					"file": "Hexagon.js",
 					"settings":
 					{
-						"buffer_size": 7823,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								933,
-								933
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 582.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "PieceMovement.js",
-					"settings":
-					{
-						"buffer_size": 2438,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								855,
-								872
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "Piece.js",
-					"settings":
-					{
-						"buffer_size": 1168,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1147,
-								1116
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 6,
-					"settings":
-					{
-						"buffer_size": 9714,
+						"buffer_size": 406,
 						"regions":
 						{
 							"match":
@@ -1260,300 +1141,8 @@
 								"regions":
 								[
 									[
-										146,
-										163
-									],
-									[
-										458,
-										475
-									],
-									[
-										774,
-										782
-									],
-									[
-										980,
-										988
-									],
-									[
-										1103,
-										1111
-									],
-									[
-										1308,
-										1316
-									],
-									[
-										1549,
-										1556
-									],
-									[
-										1604,
-										1611
-									],
-									[
-										1707,
-										1714
-									],
-									[
-										1904,
-										1911
-									],
-									[
-										2119,
-										2126
-									],
-									[
-										2351,
-										2358
-									],
-									[
-										2491,
-										2498
-									],
-									[
-										2643,
-										2650
-									],
-									[
-										2806,
-										2813
-									],
-									[
-										2981,
-										2988
-									],
-									[
-										3011,
-										3018
-									],
-									[
-										3063,
-										3070
-									],
-									[
-										3086,
-										3093
-									],
-									[
-										3132,
-										3139
-									],
-									[
-										3258,
-										3265
-									],
-									[
-										3328,
-										3335
-									],
-									[
-										3409,
-										3416
-									],
-									[
-										3434,
-										3441
-									],
-									[
-										3511,
-										3518
-									],
-									[
-										3741,
-										3748
-									],
-									[
-										3795,
-										3802
-									],
-									[
-										3857,
-										3864
-									],
-									[
-										3903,
-										3910
-									],
-									[
-										3927,
-										3934
-									],
-									[
-										4048,
-										4055
-									],
-									[
-										4130,
-										4137
-									],
-									[
-										4160,
-										4167
-									],
-									[
-										4234,
-										4241
-									],
-									[
-										4319,
-										4326
-									],
-									[
-										4556,
-										4563
-									],
-									[
-										4595,
-										4602
-									],
-									[
-										4735,
-										4742
-									],
-									[
-										4776,
-										4783
-									],
-									[
-										4807,
-										4814
-									],
-									[
-										4958,
-										4965
-									],
-									[
-										5213,
-										5220
-									],
-									[
-										5508,
-										5515
-									],
-									[
-										5569,
-										5576
-									],
-									[
-										5802,
-										5809
-									],
-									[
-										5907,
-										5914
-									],
-									[
-										6301,
-										6308
-									],
-									[
-										6406,
-										6413
-									],
-									[
-										6697,
-										6704
-									],
-									[
-										6821,
-										6828
-									],
-									[
-										7060,
-										7067
-									],
-									[
-										7157,
-										7164
-									],
-									[
-										7279,
-										7286
-									],
-									[
-										7483,
-										7490
-									],
-									[
-										7548,
-										7555
-									],
-									[
-										7613,
-										7620
-									],
-									[
-										7840,
-										7847
-									],
-									[
-										7901,
-										7908
-									],
-									[
-										7962,
-										7969
-									],
-									[
-										8021,
-										8028
-									],
-									[
-										8082,
-										8089
-									],
-									[
-										8143,
-										8150
-									],
-									[
-										8210,
-										8217
-									],
-									[
-										8278,
-										8285
-									],
-									[
-										8380,
-										8387
-									],
-									[
-										8448,
-										8455
-									],
-									[
-										8667,
-										8674
-									],
-									[
-										8929,
-										8936
-									],
-									[
-										9114,
-										9121
-									],
-									[
-										9187,
-										9194
-									],
-									[
-										9270,
-										9277
-									],
-									[
-										9294,
-										9301
-									],
-									[
-										9440,
-										9447
-									],
-									[
-										9637,
-										9644
+										330,
+										335
 									]
 								],
 								"scope": ""
@@ -1562,8 +1151,8 @@
 						"selection":
 						[
 							[
-								1437,
-								1437
+								165,
+								165
 							]
 						],
 						"settings":
@@ -1578,40 +1167,13 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 198.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 7,
-					"settings":
-					{
-						"buffer_size": 4475,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4475,
-								4475
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1093.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 8,
+					"buffer": 4,
 					"file": "/Users/JP/code/swarm2/swarm.html",
 					"settings":
 					{
@@ -1637,7 +1199,7 @@
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 5,
 					"file": "/Users/JP/code/swarm2/swarm.css",
 					"settings":
 					{
@@ -2239,6 +1801,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 207.0,
+	"side_bar_width": 271.0,
 	"status_bar_visible": true
 }
